@@ -15,8 +15,5 @@ def index(request):
     return render(request , 'index.html')
 
 
-
-
-
 def new(request):
     return redirect('https://dsa-delta-eight.vercel.app/')
