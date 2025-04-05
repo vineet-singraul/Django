@@ -9,8 +9,8 @@ def home(request):
 
 
 def index(request):
-    print("REEEEEEEEEEEEEEEEEEEEE",request.method) 
-    print("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",request.GET)
+    print(request.method) 
+    print(request.GET)
     x = request.GET.get('name')
     y = request.GET.get('city')
     print(x , y)
