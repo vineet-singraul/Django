@@ -1,7 +1,14 @@
 {% extends "commen.html" %}
+
+{% load static %}
+
 {% block title %}
 Register
 {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock  %}
 
  
 {% block content %}
@@ -9,6 +16,7 @@ register Content
 <form action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
 
     {% csrf_token %}
+    <h1>Hello</h1>
     <label for="username">Name:</label>
     <input type="text" name="username" placeholder="Enter your name">
     <br>
