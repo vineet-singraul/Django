@@ -39,5 +39,11 @@ def registerdata(request):
     document = request.FILES.get('resume')
     print(username,email,detail,phone,dob,subscribe,gender,password,cpassword)
 
-    Student.objects.create(stu_name=username,)
+    Student.objects.create(stu_name=username,
+                            stu_email=email,
+                            stu_dis = detail , 
+                            stu_contect = phone,
+                            stu_dob = dob,
+                            stu_quali = subscribe , 
+                            stu_gender = gender)
 
