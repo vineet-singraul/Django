@@ -39,15 +39,16 @@ def ragisterdata(request):
     image = request.POST.get('profile-pic')
     resume = request.POST.get('resume')
     password = request.POST.get('password')
+    cpassword = request.POST.get('cpassword')
 
     user = Student.objects.filter(stu_email = email)
-
     if user:
         msg = "user Alrady Exits"
         return render(request , 'ragister.html' , {"msg":msg})
 
     else:
-        Student.objects.create( stu_name = username,
+        if password == cpassword:
+                Student.objects.create( stu_name = username,
                             stu_email = email,
                             stu_detail = detail,
                             stu_phone = phone,
@@ -58,7 +59,20 @@ def ragisterdata(request):
                             stu_resume = resume,
                             stu_pass = password  
                          )
-        msg = "Ragistration Succesfull"
-        return render(request , "login.html" , {"msg":msg})
+                msg = "Ragistration Succesfull"
+                return render(request , "login.html" , {"msg":msg})
+        else:
+            msg = "Password and Cpassword is Not match : "
+            userdata = {
+                'username':username,
+                'email':email,
+                'detail':detail,
+                'phone':phone,
+                'dob':dob,
+                'subscribe':subscribe,
+                'gender':gender,
+                'image':image,
+                'resume':resume}
+            return render(request,'ragister.html',{'msg':msg,'data':userdata})
 
  

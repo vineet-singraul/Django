@@ -9,23 +9,24 @@ ragister
 <h1> Ragister </h1>
 
 <form action="{% url 'ragisterdata' %}" method="post" enctype="multipart/form-data">
-
+{{data}}
+    <h1>{{msg}}</h1>
     {% csrf_token %}
    <label for="username">Name:</label>
-   <input type="text" name="username" placeholder="Enter your name">
+   <input type="text" name="username" value="{{data.username}}" placeholder="Enter your name">
    <br> 
    <label for="email">Email:</label>
-   <input type="email" name="email" placeholder="Enter your email">
+   <input type="email" name="email" value="{{data.email}}" placeholder="Enter your email">
    <br>
    <label for="detail">Description:</label>
-   <textarea name="detail" cols="20" rows="5"></textarea>
+   <textarea name="detail" value="{{data.detail}}" cols="20" rows="5"></textarea>
    <br>
    <label for="phone">Contact:</label>
-   <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number">
+   <input type="tel" name="phone" value="{{data.phone}}" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number">
    <br>
    <br>
    <label for="dob">DOB:</label>
-   <input type="date" name="dob" min="2007-01-01">
+   <input type="date" name="dob" value="{{data.dob}}" min="2007-01-01">
    <br>
    <br>
    <label for="subscribe">Education:</label>
@@ -39,11 +40,11 @@ ragister
    <input type="radio" name="gender" value="female"> Female
    <br>
    <label for="profile-pic">Image:</label>
-   <input type="file" name="profile-pic" accept=".jpeg, .png" >
+   <input type="file" name="profile-pic" value="{{data.image}}" accept=".jpeg, .png" >
    <br>
 
    <label for="resume">Resume:</label>
-   <input type="file" name="resume" accept=".pdf, .doc" >
+   <input type="file" name="resume" value="{{data.resume}}" accept=".pdf, .doc" >
    <br>
    <label for="password">Password:</label>
    <input type="password" name="password">
