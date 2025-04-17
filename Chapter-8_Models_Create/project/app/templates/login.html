@@ -9,16 +9,16 @@ Login
 <h1>{{msg}}</h1>
 <h1> Login </h1>
 <hr/>
-<form action="{% url 'login' %}" method='POST'>
+<form action="{% url 'logindata' %}" method='POST' >
   {% csrf_token %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1" value="">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endblock  %}
+{% endblock  %} 

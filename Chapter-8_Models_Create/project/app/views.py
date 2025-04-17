@@ -76,3 +76,29 @@ def ragisterdata(request):
             return render(request,'ragister.html',{'msg':msg,'data':userdata})
 
  
+def logindata(request):
+    if request.method == 'POST':
+        e = request.POST.get('email')
+        p = request.POST.get('password')
+
+        user = Student.objects.filter(stu_email = e)
+
+        if user:
+            userdata = Student.objects.get(stu_email = e)
+            print("User Data : ",userdata.stu_name)
+            print("User Data : ",userdata.stu_email)
+            p1 = userdata.stu_pass
+
+            if p == p1:
+                return(request,'dashbord.html',{'userdata':userdata})
+            
+            else:
+                pmsg = 'password Not Match : '
+                return render(request,'login.html',{'email':e})
+        
+        else: 
+            msg = 'email not exits :'
+            return render(request,'ragister.html')
+        
+    else:
+        return render(request,'login.html')

@@ -9,4 +9,5 @@ urlpatterns = [
     path('ragister/',views.ragister,name='ragister'),
     path('login/',views.login,name='login'),
     path('ragisterdata/',views.ragisterdata,name='ragisterdata'),
+    path('logindata/',views.logindata,name='logindata')
 ]
