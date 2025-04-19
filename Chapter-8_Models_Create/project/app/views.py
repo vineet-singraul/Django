@@ -36,8 +36,8 @@ def ragisterdata(request):
     dob = request.POST.get('dob')
     subscribe = request.POST.get('subscribe')
     gender = request.POST.get('gender')
-    image = request.POST.get('profile-pic')
-    resume = request.POST.get('resume')
+    image = request.FILES.get('profile-pic')
+    resume = request.FILES.get('resume')
     password = request.POST.get('password')
     cpassword = request.POST.get('cpassword')
 
