@@ -26,7 +26,6 @@ def login(request):
         return render(request , "login.html")
 
 def ragisterdata(request):
-    # return render(request , "ragisterdata.html")
     # print("==================",request.method)
     # print(request.POST)
     username = request.POST.get('username')
