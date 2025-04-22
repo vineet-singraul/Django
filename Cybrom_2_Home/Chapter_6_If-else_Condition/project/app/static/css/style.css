@@ -1,0 +1,89 @@
+/* Main container styling */
+.MainDiv {
+    width: 100%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #c5c5c5;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.MainDiv h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Flex container to place left and right side by side */
+#formDataDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Left and right column */
+.left,
+.right {
+    width: 50%;
+}
+
+/* Box class for spacing between inputs */
+.Box {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.Box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Inputs, textareas, selects */
+.Box input[type="text"],
+.Box input[type="email"],
+.Box input[type="password"],
+.Box input[type="tel"],
+.Box input[type="date"],
+.Box input[type="file"],
+.Box textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Radio and Checkbox label inline */
+.Box input[type="radio"],
+.Box input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Submit Button */
+.Box input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.Box input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .left,
+    .right {
+        width: 100%;
+    }
+}

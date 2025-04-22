@@ -1,0 +1,54 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+    login
+{% endblock  %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock  %}
+
+{% block content %}
+  <form action="{% url 'logindata' %}" method="post" class="signup-wrapper" id="LOGH">
+  <h2>Welcome Back!</h2>
+
+  {% if msg %}
+  <strong id="STR">{{msg}}</strong>
+  {% endif %}
+
+  {% csrf_token %}
+
+  <div class="form-grid">
+
+    <!-- Left Column (Login Fields) -->
+    <div class="left_div">
+      <div class="common_div">
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Enter your email" value="{{userdata.stu_email}}" required>
+      </div>
+
+      <div class="common_div">
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="common_div">
+        <input id="button" type="submit" value="Login">
+      </div>
+
+            <div class="common_div" style="text-align: center;">
+        <p style="font-size: 14px; color: rgb(255, 0, 0);">
+          Don't have an account?
+          <a class="nav-link" href="{% url 'signup' %}"
+            style="color: #007bff; text-decoration: none; font-weight: 600;">
+            Sign Up Here
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock  %}

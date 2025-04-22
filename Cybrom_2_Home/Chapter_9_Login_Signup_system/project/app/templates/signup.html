@@ -1,0 +1,84 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+Signup
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock  %}
+
+{% block content %}
+
+  <form action="{% url 'signupdata' %}" method="post" enctype="multipart/form-data" class="signup-wrapper">
+    <h2>Create Your Account</h2>
+        
+    {% if msg %}
+           <strong id="STR">{{msg}}</strong>
+    {% endif %}
+
+    {% csrf_token %}
+
+    <div class="form-grid">
+
+      <!-- Left Column -->
+      <div class="left_div">
+        <div class="common_div">
+          <label for="username">Name:</label>
+          <input type="text" name="username" placeholder="Enter your name" required>
+        </div>
+
+        <div class="common_div">
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="common_div">
+          <label for="phone">Contact:</label>
+          <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number" required>
+        </div>
+
+            <div class="common_div" style="text-align: center;">
+               <p style="font-size: 14px; color:rgb(255, 0, 0);">
+                  Already have an account?
+                  <a class="nav-link" href="{% url 'login' %}" style="color: #007bff; text-decoration: none; font-weight: 600;">
+                      Click here
+                  </a>
+                </p>
+            </div>
+
+      </div>
+
+      <!-- Right Column -->
+      <div class="right_div">
+        <div class="common_div">
+          <label for="password">Password:</label>
+          <input type="password" name="password" placeholder="Enter password" required>
+        </div>
+
+        <div class="common_div">
+          <label for="cpassword">Confirm Password:</label>
+          <input type="password" name="cpassword" placeholder="Confirm password" required>
+        </div>
+
+        <div class="common_div">
+          <label for="gender">Select Your Gender:</label>
+          <select name="gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="common_div">
+          <input id="button" type="submit" value="Sign Up">
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+{% endblock %}

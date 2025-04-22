@@ -1,0 +1,41 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+  Deshbord
+{% endblock  %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/dashbors.css' %}">
+{% endblock  %}
+
+{% block content %}
+
+   <div class="dashboard-container">
+    <div class="sidebar">
+      <h2>User Panel</h2>
+      <a href="#">🛒 My Orders</a>
+      <a href="#">🚚 Track Order</a>
+      <a href="#">❤️ Wishlist</a>
+      <a href="#">👤 My Profile</a>
+      <a href="#">📍 My Address</a>
+      <a href="#">🎁 My Offers</a>
+      <a href="#">🔓 Logout</a>
+    </div>
+
+    <div class="main-content">
+      <h1>Welcome, {{ userdata.stu_name }}</h1>
+
+      <div class="card">
+        <h2>Recent Orders</h2>
+        <p>No recent orders to show.</p>
+      </div>
+
+      <div class="card">
+        <h2>Offers Just for You</h2>
+        <p>Use code <strong>WELCOME10</strong> to get 10% off on your next purchase.</p>
+      </div>
+    </div>
+  </div>
+{% endblock  %}

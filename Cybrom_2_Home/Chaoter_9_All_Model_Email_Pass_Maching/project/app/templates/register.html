@@ -1,0 +1,97 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+Register
+{% endblock %}
+
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock  %}
+
+
+{% block content %}
+<h1>Register</h1>
+
+<form action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <strong>{{msg}}</strong>
+
+    <div style="display: flex; gap: 20px;">
+
+        <!-- Left Div -->
+        <div class="left_div" style="flex: 1;">
+            <div class="common_div">
+                <label for="username">Name:</label>
+                <input type="text" name="username" placeholder="Enter your name">
+            </div>
+
+            <div class="common_div">
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+
+            <div class="common_div">
+                <label for="phone">Contact:</label>
+                <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10"
+                    placeholder="Enter your phone number">
+            </div>
+
+            <div class="common_div">
+                <label for="dob">DOB:</label>
+                <input type="date" name="dob" min="2007-01-01">
+            </div>
+
+            <div class="common_div">
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+            </div>
+
+            <div class="common_div">
+                <label for="cpassword">Con_Password:</label>
+                <input type="password" name="cpassword">
+            </div>
+        </div>
+
+        <!-- Right Div -->
+        <div class="right_div" style="flex: 1;">
+            <div class="common_div">
+                <label for="gender">Gender:</label>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
+            </div>
+            <div class="common_div">
+                <label for="profile-pic">Image:</label>
+                <input type="file" name="profile-pic" accept=".jpeg, .png">
+            </div>
+            <div class="common_div">
+                <label for="resume">Resume:</label>
+                <input type="file" name="resume" accept=".pdf, .doc">
+            </div>
+            <div class="common_div">
+                <label for="subscribe">Education:</label>
+                <input type="checkbox" name="subscribe" value="one"> B.Tech
+                <input type="checkbox" name="subscribe" value="two"> M.Tech
+                <input type="checkbox" name="subscribe" value="three"> P.hd
+            </div>
+
+            <div class="common_div">
+                <label for="detail">Description:</label>
+                <textarea name="detail" cols="20" rows="5"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="common_div">
+        <input id="button" type="submit" value="Submit">
+    </div>
+
+
+</form>
+
+
+{% endblock %}

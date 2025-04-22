@@ -1,0 +1,44 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'logindata' %}" method="POST" class="login-wrapper">
+    {% csrf_token %}
+
+    <div class="left_div" id="log">
+        <!-- Optional Alert Message -->
+        {% if msg %}
+        <p id="STR">{{msg}}</p>
+        {% endif %}
+        <h2 id="h2">Login</h2>
+        <div class="common_div">
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Enter your email" value="{{email}}" required>
+        </div>
+
+        <div class="common_div">
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="common_div">
+            <input id="button" type="submit" value="Login">
+        </div>
+
+        <div class="redirect-text">
+            Don't have an account?
+            <a href="{% url 'signup' %}">Sign up</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

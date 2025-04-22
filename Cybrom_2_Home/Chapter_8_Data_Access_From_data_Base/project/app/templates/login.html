@@ -1,0 +1,21 @@
+{% extends "comman.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block contect %}
+<h1>{{msg}}</h1>
+<h1>Login Page</h1>
+
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <label for="email">Email:</label>
+    <input type="email" name="email" placeholder="Enter your email">
+
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
