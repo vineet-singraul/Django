@@ -3,7 +3,7 @@ from django.urls import path # type: ignore
 from app import views
 from django.conf import settings   # type: ignore
 from django.conf.urls.static import static   # type: ignore
-urlpatterns = [
+urlpatterns = [ 
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('mens/',views.mens,name='mens'),
