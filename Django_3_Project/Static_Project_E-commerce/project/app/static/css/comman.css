@@ -1,0 +1,129 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f7fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #00022b, #6d1b5b);
+    padding: 1rem 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ++++ Web Logo Ke liye ++++*/
+#LogoDiv {
+    display:grid;
+}
+
+.logoImg1{
+    width: 50px;
+    position: relative;
+    border-radius: 50%;
+    top: 10px;
+    left: 20px;
+}
+
+.logoImg2{
+    position: relative;
+    top: -8px;
+    width: 100px;
+    height: 30px;
+}
+
+
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+}
+
+
+
+/* Dropdown Menu */
+.navbar-nav .dropdown-menu {
+    background-color: #0a0f5a;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .dropdown-item {
+    color: #ffffff;
+    font-weight: 500;
+    padding: 10px 20px;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #6d1b5b;
+}
+
+
+
+
+/* Cart Icon */
+#cartDiv {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+#cartDiv:hover {
+    color: #ff69b4;
+}
+
+/* Cart Badge (Optional - If you want item count) */
+#cartDiv::after {
+    content: '2'; /* Static example. Dynamic number via JS later. */
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #ff69b4;
+    color: white;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Navbar Toggler (Mobile) */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+/* Mobile Menu */
+@media (max-width: 991px) {
+    .navbar-nav {
+        background: #0a0f5a;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 8px 0;
+    }
+}
+

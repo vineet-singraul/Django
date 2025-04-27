@@ -8,28 +8,36 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>
         {% block title %}
         home
         {% endblock %}
     </title>
+    {% load static %}
 
 
-    {% block css %}  {% endblock  %}
+    {% block css %} 
+      <link rel="stylesheet" href="{% static 'css/comman.css' %}">
+    {% endblock  %}
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <div id="LogoDiv">
+                <img src="../static/image/image.png" alt="" class="logoImg1">
+                <img src="../static/image/logoName.png" alt="" class="logoImg2">
+            </div>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">xx</span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
@@ -55,7 +63,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                            href="{% url 'electranic' %}">Electranic</a>
+                            href="{% url 'electranics' %}">Electranic</a>
                     </li>
 
                     <li class="nav-item">
@@ -64,6 +72,7 @@
                     </li>
 
                 </ul>
+
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
@@ -79,7 +88,7 @@
                             </ul>
                         </li>
 
-                        {% if  %}
+                        {% if false %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                 href="{% url 'login' %}">Login</a>
@@ -90,8 +99,12 @@
                                 href="{% url 'signup' %}">Signup</a>
                         </li>
                         {% endif %}
-
                     </ul>
+
+                     <div id="cartDiv">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                     </div>
+
                 </form>
             </div>
         </div>

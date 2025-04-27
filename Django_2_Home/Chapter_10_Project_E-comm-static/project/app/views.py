@@ -3,6 +3,8 @@ from .models import Customer
 # Create your views here.
 
 def home(request):
+    n = request.POST.get('name')
+    user = Customer.objects.get(cstmer_name = n)
     return render(request,"comman.html")
 
 def mens(request):
