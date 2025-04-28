@@ -11,4 +11,6 @@ urlpatterns = [
     path('grousary/',views.grousary,name='grousary'),
     path('login/',views.login,name='login'),
     path('signup/',views.signup,name='signup'),
+    path('signupdata/',views.signupdata,name='signupdata'),
+    path('logindata/',views.logindata,name='logindata'),
 ]
