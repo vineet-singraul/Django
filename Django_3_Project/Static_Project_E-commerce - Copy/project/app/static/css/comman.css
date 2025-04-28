@@ -1,0 +1,127 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0066ff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #00022b, #6d1b5b);
+    padding: 1rem 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 15px rgb(0, 0, 0);
+}
+
+/* ++++ Web Logo Ke liye ++++*/
+#LogoDiv {
+    display:grid;
+}
+
+.logoImg1{
+    width: 50px;
+    position: relative;
+    border-radius: 50%;
+    top: 10px;
+    left: 20px;
+}
+
+.logoImg2{
+    position: relative;
+    top: -8px;
+    width: 100px;
+    height: 30px;
+}
+
+
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+    border: 1px solid #ffffff0f;
+    border-radius: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    border: 1px solid #ffffff0f;
+    border-radius: 20px;
+    background-color: #ffffff21;
+}
+
+
+
+
+/* Dropdown Menu */
+.navbar-nav .dropdown-menu {
+    background-color: #2c00cb;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgb(0, 0, 0);
+}
+
+.navbar-nav .dropdown-item {
+    color: #000000;
+    font-weight: 500;
+    padding: 10px 20px;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #a2007f;
+    color: #2300ae;
+}
+
+
+/* Cart Icon */
+#cartDiv {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-left: 20px;
+    cursor: pointer;
+    position: relative;
+}
+#cartDiv i{
+    border: 1px solid #e7e7e770;
+    padding: 10px;
+    border-radius: 50%;
+    background: linear-gradient(45deg,rgb(0, 0, 100),rgb(130, 0, 128));
+}
+
+#cartDiv:hover {
+    color: #ff69b4;
+}
+
+
+/* Navbar Toggler (Mobile) */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+/* Mobile Menu */
+@media (max-width: 991px) {
+    .navbar-nav {
+        background: #0a0f5a;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 8px 0;
+    }
+}
+

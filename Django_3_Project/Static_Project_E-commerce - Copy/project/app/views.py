@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Customer
+
 # Create your views here.
 
 def home(request):
@@ -26,7 +27,6 @@ def login(request):
 def signup(request):
     return render(request,"signup.html")
 
-
 def signupdata(request):
     name = request.POST.get('name')
     email = request.POST.get('email')
@@ -36,68 +36,65 @@ def signupdata(request):
     phoneNumber = request.POST.get('phoneNumber')
     city = request.POST.get('city')
      
-    user = Customer.objects.filter(cus_email = email)
+    user = Customer.objects.filter(cus_email=email)
     if user.exists():
         userdata = {
-        'name': name,
-        'email': email,
-        'password': password,
-        'cpaas': cpaas,
-        'phoneNumber': phoneNumber,
-        'city': city
-      }
+            'name': name,
+            'email': email,
+            'password': password,
+            'cpaas': cpaas,
+            'phoneNumber': phoneNumber,
+            'city': city
+        }
         msg = 'Email already exists'
         return render(request, "signup.html", {'msg': msg, 'userdata': userdata})
-
     else:
-        if password == cpaas :
+        if password == cpaas:
             Customer.objects.create(
-              cus_name = name,
-              cus_email = email,
-              cus_password = password,
-              cus_cpassword = cpaas,
-              cus_image = userImage,
-              cus_phone = phoneNumber,
-              cus_location = city
-            ) 
+                cus_name=name,
+                cus_email=email,
+                cus_password=password,
+                cus_cpassword=cpaas,
+                cus_image=userImage,
+                cus_phone=phoneNumber,
+                cus_location=city
+            )
             msg = 'Account Successfully created'
-            return render(request,"login.html",{'msg':msg})
+            return redirect('login')  # Redirect to login page
         else:
-             userdata = {
-               'name': name,
-               'email': email,
-               'phoneNumber': phoneNumber,
-               'city': city
-              }
-             msg = 'Password Is Not Match'
-             return render(request,"signup.html",{'msg':msg,'userdata':userdata})
-    
-
+            userdata = {
+                'name': name,
+                'email': email,
+                'phoneNumber': phoneNumber,
+                'city': city
+            }
+            msg = 'Password does not match'
+            return render(request, "signup.html", {'msg': msg, 'userdata': userdata})
 
 def logindata(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = Customer.objects.filter(cus_email = email)
-       
+        user = Customer.objects.filter(cus_email=email)
+
         if user.exists():
-            userdata = Customer.objects.get(cus_email = email)
+            userdata = Customer.objects.get(cus_email=email)
             sto_pass = userdata.cus_password
-            
+
             if password == sto_pass:
                 request.session['log_email'] = userdata.cus_email
                 request.session['log_name'] = userdata.cus_name
-                msg = 'password is correct'
-                return render(request,"login.html",{'msg':msg})
-
+                return redirect('home')  # Redirect after login to home page
             else:
-                msg = 'password is not match'
-                userdata = userdata.cus_email
-                return render(request,"login.html",{'msg':msg,'userdata':userdata})
-
-        else :
-            msg = 'email not found create account'
-            return render(request,"sigmup.html",{'msg':msg})
+                msg = 'Password is incorrect'
+                return render(request, "login.html", {'msg': msg, 'userdata': email})
+        else:
+            msg = 'Email not found, please create an account'
+            return render(request, "signup.html", {'msg': msg})
 
     else:
-        return render(request,"login.html")
+        return render(request, "login.html")
+
+def logout(request):
+    request.session.flush()
+    return redirect('login')

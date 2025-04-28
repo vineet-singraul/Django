@@ -82,19 +82,26 @@
 
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if request.session.log_email %}
+                        <!-- User is logged in -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Settings
+                                settings
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li class="nav-item">
                                     <a class="dropdown-item" aria-current="page"
-                                        href="{% url 'login' %}">Logout</a>
+                                        href="{% url 'logout' %}">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item" aria-current="page"
+                                        href="#">{{ request.session.log_name }}</a>
                                 </li>
                             </ul>
                         </li>
-
+                        {% else %}
+                        <!-- User is not logged in -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                 href="{% url 'login' %}">Login</a>
@@ -103,14 +110,15 @@
                             <a class="nav-link active" aria-current="page"
                                 href="{% url 'signup' %}">Signup</a>
                         </li>
+                        {% endif %}
                     </ul>
 
                     <div id="cartDiv">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
-
                 </form>
-                
+
+
             </div>
         </div>
     </nav>
@@ -118,7 +126,7 @@
 
 
 
-    
+
     <div>
         {% block content %}
         <h1>Home</h1>
