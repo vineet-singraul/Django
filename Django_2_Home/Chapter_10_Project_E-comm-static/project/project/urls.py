@@ -16,3 +16,7 @@ urlpatterns = [
     path('signupdata/',views.signupdata,name='signupdata'),
     path('logindata/',views.logindata,name='logindata'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
