@@ -71,6 +71,8 @@ def signupdata(request):
             msg = 'Password does not match'
             return render(request, "signup.html", {'msg': msg, 'userdata': userdata})
 
+
+
 def logindata(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -80,11 +82,15 @@ def logindata(request):
         if user.exists():
             userdata = Customer.objects.get(cus_email=email)
             sto_pass = userdata.cus_password
+            show_city = userdata.cus_location
+            userSendingData = {
+               'show_city': show_city,
+            }
 
             if password == sto_pass:
                 request.session['log_email'] = userdata.cus_email
                 request.session['log_name'] = userdata.cus_name
-                return redirect('home')  # Redirect after login to home page
+                return render(request,'home.html',{'userSendingData':userSendingData})  # Redirect after login to home page
             else:
                 msg = 'Password is incorrect'
                 return render(request, "login.html", {'msg': msg, 'userdata': email})

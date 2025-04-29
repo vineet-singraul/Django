@@ -37,8 +37,9 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div id="LogoDiv">
-                <img src="../static/image/image.png" alt="" class="logoImg1">
-                <img src="../static/image/logoName.png" alt="" class="logoImg2">
+                <!-- <img src="../static/image/image.png" alt="" class="logoImg1"> -->
+                <!-- <img src="../static/image/logoName.png" alt="" class="logoImg2"> -->
+                <img src="../static/image/log1.png" alt="" class="logoImg2">
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -94,10 +95,6 @@
                                     <a class="dropdown-item" aria-current="page"
                                         href="{% url 'logout' %}">Logout</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item" aria-current="page"
-                                        href="#">{{ request.session.log_name }}</a>
-                                </li>
                             </ul>
                         </li>
                         {% else %}
@@ -116,8 +113,18 @@
                     <div id="cartDiv">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
+                    <div id="cartDiv" id="searchIconDiv" onclick="showSearchBox()">
+                        <i class="fa-solid fa-magnifying-glass"></i>                   
+                    </div>
+                    <div id="searchBoxDiv" style="margin-top: 10px;"></div>
                 </form>
-
+               
+                 {% if request.session.log_email %}
+                 <div id="userDetails">
+                     <i class="fas fa-user manIcon"></i>
+                     <span>Hello, {{ request.session.log_name }}</span>
+                 </div>
+                {% endif %}
 
             </div>
         </div>
@@ -135,7 +142,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
+
+     <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 

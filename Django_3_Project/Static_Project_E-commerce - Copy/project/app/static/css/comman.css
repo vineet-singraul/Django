@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #0066ff;
+    background-color: #008197;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -33,9 +33,11 @@ body {
 
 .logoImg2{
     position: relative;
-    top: -8px;
-    width: 100px;
-    height: 30px;
+    top: 0px;
+    width: 111px;
+    height: 67px;
+    border-radius: 10px;
+    left: -24px;
 }
 
 
@@ -112,6 +114,83 @@ body {
     font-size: 1.5rem;
 }
 
+
+#userDetails{
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(45deg, blue, rgb(198, 0, 33));
+    gap: 5px;
+    color: #fff;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin-left: 22px;
+}
+
+#userDetails p{   
+    font-size:8px;
+    color: rgb(255, 255, 255);
+}
+
+#userDetails strong{
+    color: #fff;
+    font-size: 13px;
+}
+
+.manIcon{
+    margin-top:0px;
+    color: rgb(255, 255, 255);
+    border: 1px solid;
+    padding: 3px;
+    border-radius: 20px;
+    background: linear-gradient(45deg,rgb(0, 0, 101),rgb(105, 0, 103));
+}
+
+
+#searchBoxDiv {
+    position: absolute;
+    top: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+
+}
+.searchBoxDiv {
+    border: 1px solid;
+    padding: 20px;
+    background: linear-gradient(45deg, #001041, #db007b85);
+    border-radius: 50px;
+}
+
+
+#myInput {
+    width: 250px;
+    padding: 8px 12px;
+    border: none;
+    border-bottom: 3px solid blue;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #0000001e;
+    color: #fff;
+}
+
+#searchBoxDiv button {
+    padding: 8px 18px;
+    background: linear-gradient(45deg,rgb(0, 0, 107),rgb(92, 0, 100));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
 /* Mobile Menu */
 @media (max-width: 991px) {
     .navbar-nav {
@@ -123,5 +202,18 @@ body {
     .navbar-nav .nav-link {
         margin: 8px 0;
     }
+    .searchBoxDiv {
+        border: 1px solid;
+        padding: 10px;
+        background: linear-gradient(45deg, #001041, #db007b85);
+        border-radius: 50px;
+        position: relative;
+        top: -97px;
+    }
 }
 
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++ */
