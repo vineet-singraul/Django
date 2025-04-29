@@ -20,14 +20,10 @@ def electranics(request):
 def grousary(request):
     return render(request,"grousary.html")
 
-def login(request):
-    return render(request,"login.html")
+
 
 def signup(request):
-    return render(request,"signup.html")
-
-
-def signupdata(request):
+  if request.method == 'POST':  
     name = request.POST.get('name')
     email = request.POST.get('email')
     password = request.POST.get('password')
@@ -71,10 +67,12 @@ def signupdata(request):
               }
              msg = 'Password Is Not Match'
              return render(request,"signup.html",{'msg':msg,'userdata':userdata})
-    
+  else:
+      return render(request,"signup.html")  
+  
 
 
-def logindata(request):
+def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')

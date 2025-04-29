@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Customer
 
+
 # Create your views here.
 
 def home(request):
@@ -83,14 +84,20 @@ def logindata(request):
             userdata = Customer.objects.get(cus_email=email)
             sto_pass = userdata.cus_password
             show_city = userdata.cus_location
+            show_email = userdata.cus_email
+            show_image = userdata.cus_image
+            show_name = userdata.cus_name
             userSendingData = {
                'show_city': show_city,
+               'show_email': show_email,
+               'show_image' : show_image,
+               'show_name':show_name
             }
 
             if password == sto_pass:
                 request.session['log_email'] = userdata.cus_email
                 request.session['log_name'] = userdata.cus_name
-                return render(request,'home.html',{'userSendingData':userSendingData})  # Redirect after login to home page
+                return render(request,'deshbord.html',{'userSendingData':userSendingData})  # Redirect after login to home page
             else:
                 msg = 'Password is incorrect'
                 return render(request, "login.html", {'msg': msg, 'userdata': email})

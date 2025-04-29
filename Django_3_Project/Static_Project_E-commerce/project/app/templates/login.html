@@ -9,7 +9,7 @@
 {% block content %}
 <a id="BackButton"  href="{% url 'home' %}" class="login-link">Back</a>
 <div class="page-container" id="logDiv">
-  <form method="post" action="{% url 'logindata' %}" class="registration-form">
+  <form method="post" action="{% url 'login' %}" class="registration-form">
     {% csrf_token %}
 
    {% if msg %}

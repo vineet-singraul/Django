@@ -10,7 +10,7 @@
 <a id="BackButton"  href="{% url 'home' %}" class="login-link">Back</a>
 
 <div class="page-container">
-  <form method="post" action="{% url 'signupdata' %}" class="registration-form" enctype="multipart/form-data">
+  <form method="post" action="{% url 'signup' %}" class="registration-form" enctype="multipart/form-data">
     {% csrf_token %}
 
    {% if msg %}
