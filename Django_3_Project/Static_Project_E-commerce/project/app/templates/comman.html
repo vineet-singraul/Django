@@ -33,7 +33,7 @@
 </head>
 
 <body>
-
+   {% if userdata %}
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div id="LogoDiv">
@@ -50,35 +50,102 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %} active {% endif %}"
-                            aria-current="page" href="{% url 'home' %}">Home</a>
+                            aria-current="page" href="{% url 'home'  %}">Home</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/mens/' %} active {% endif %}"
                             aria-current="page" href="{% url 'mens' %}">Mens</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/womens/' %} active {% endif %}"
                             aria-current="page" href="{% url 'womens' %}">Womens</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/kides/' %} active {% endif %}"
                             aria-current="page" href="{% url 'kides' %}">Kides</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/electranics/' %} active {% endif %}"
                             aria-current="page" href="{% url 'electranics' %}">Electranic</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/grousary/' %} active {% endif %}"
                             aria-current="page" href="{% url 'grousary' %}">Grousary</a>
                     </li>
                 </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Settings
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item">
+                                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                                </li>
+                            
+                            </ul>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'signup' %}">Signup</a>
+                        </li>
+
+                    </ul>
+                    <div id="cartDiv">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+     
+    {% else %}
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div id="LogoDiv">
+                <img src="../static/image/log1.png" alt="" class="logoImg2">
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">##</span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home1' pk=userdata.id %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/mens1/' %} active {% endif %}"
+                            aria-current="page" href="{% url 'mens1' pk=userdata.id %}">Mens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/womens1/' %} active {% endif %}"
+                            aria-current="page" href="{% url 'womens1' pk=userdata.id %}">Womens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/kides1/' %} active {% endif %}"
+                            aria-current="page" href="{% url 'kides1' pk=userdata.id %}">Kides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/electranics1/' %} active {% endif %}"
+                            aria-current="page" href="{% url 'electranics1' pk=userdata.id %}">Electranic</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/grousary1/' %} active {% endif %}"
+                            aria-current="page" href="{% url 'grousary1' pk=userdata.id %}">Grousary</a>
+                    </li>
+                </ul>
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
@@ -96,28 +163,24 @@
 
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                                href="{% url 'login' %}">Login</a>
+                                href="#">Welcome</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="{% url 'signup' %}">Signup</a>
-                        </li>
-                    </ul>
 
+                    </ul>
                     <div id="cartDiv">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
-
                 </form>
-                
             </div>
-        </div>
+         </div>
     </nav>
+    {% endif %}
 
 
 
 
-    
+
+
     <div>
         {% block content %}
         <h1>Home</h1>
