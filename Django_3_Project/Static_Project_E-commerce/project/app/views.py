@@ -4,17 +4,7 @@ from .models import Customer
 
 
 def home(request):
-    if 'user_id' in request.session:
-        user_id = request.session['user_id']
-        data = Customer.objects.get(id=user_id)
-        userdata = {
-            'id': data.id,
-            'name': data.cus_name,
-            'email': data.cus_email
-        }
-        return render(request, "comman.html", {'userdata': userdata})
-    else:
-        return render(request, "comman.html") 
+    return render(request, "comman.html") 
 
 def mens(request):
     return render(request,"mens.html")
@@ -95,8 +85,12 @@ def login(request):
 
             if password == sto_pass:
                 msg = 'password is correct'
-
-                return render(request,"login.html",{'msg':msg})
+                data = {
+                    'name':userdata.cus_name,
+                    'email':userdata.cus_email,
+                    'image':userdata.cus_image
+                }
+                return render(request,"deshbord.html",{'msg':msg,'data':data})
 
             else:
                 msg = 'password is not match'
@@ -118,42 +112,31 @@ def login(request):
 
 
 def home1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'home.html',{'userdata':userdata})
 
 
 def mens1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'mens.html',{'userdata':userdata})
 
 
 def womens1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'womens.html',{'userdata':userdata})
 
 
 def kides1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'kides.html',{'userdata':userdata})
 
 
 def electranics1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'electranics.html',{'userdata':userdata})
 
 
 
 def grousary1(request,pk):
-    data = Customer.objects.get(id=pk)
-    userdata = {'id':data.id,'name':data.cus_name,'email':data.cus_email,'location':data.cus_location,'image':data.cus_image}
+    userdata = Customer.objects.get(id=pk)
     return render(request,'grousary.html',{'userdata':userdata})
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('home')  # Redirect to non-pk home page

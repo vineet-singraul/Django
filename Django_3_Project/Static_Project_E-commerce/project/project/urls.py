@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from app import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
@@ -11,7 +13,6 @@ urlpatterns = [
     path('grousary/',views.grousary,name='grousary'),
     path('login/',views.login,name='login'),
     path('signup/',views.signup,name='signup'),
-    path('logout/', views.logout_view, name='logout'),
 
     path('home/<int:pk>/',views.home1,name='home1'),
     path('mens/<int:pk>/',views.mens1,name='mens1'),
@@ -19,5 +20,4 @@ urlpatterns = [
     path('kides/<int:pk>/',views.kides1,name='kides1'),
     path('electranics/<int:pk>/',views.electranics1,name='electranics1'),
     path('grousary/<int:pk>/',views.grousary1,name='grousary1'),
-
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
