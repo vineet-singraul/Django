@@ -4,17 +4,17 @@ from .models import Customer
 
 
 def home(request):
-    if 'user_id' in request.session:
-        user_id = request.session['user_id']
-        data = Customer.objects.get(id=user_id)
-        userdata = {
-            'id': data.id,
-            'name': data.cus_name,
-            'email': data.cus_email
-        }
-        return render(request, "comman.html", {'userdata': userdata})
-    else:
-        return render(request, "comman.html") 
+    # if 'user_id' in request.session:
+    #     user_id = request.session['user_id']
+    #     data = Customer.objects.get(id=user_id)
+    #     userdata = {
+    #         'id': data.id,
+    #         'name': data.cus_name,
+    #         'email': data.cus_email
+    #     }
+    #     return render(request, "comman.html", {'userdata': userdata})
+    # else:
+    return render(request, "home.html") 
 
 def mens(request):
     return render(request,"mens.html")
@@ -95,16 +95,10 @@ def login(request):
 
             if password == sto_pass:
                 msg = 'password is correct'
-                data = {
-                    'name':userdata.cus_name,
-                    'email':userdata.cus_email,
-                    'image':userdata.cus_image
-                }
-                return render(request,"deshbord.html",{'msg':msg,'data':data})
+                return render(request,"deshbord.html",{'msg':msg,'userdata':userdata})
 
             else:
                 msg = 'password is not match'
-                userdata = userdata.cus_email
                 return render(request,"login.html",{'msg':msg,'userdata':userdata})
 
         else :
@@ -122,6 +116,7 @@ def login(request):
 
 
 def home1(request,pk):
+    print("################")
     userdata = Customer.objects.get(id=pk)
     return render(request,'home.html',{'userdata':userdata})
 
