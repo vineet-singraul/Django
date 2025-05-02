@@ -4,7 +4,17 @@ from .models import Customer
 
 
 def home(request):
-    return render(request, "comman.html") 
+    if 'user_id' in request.session:
+        user_id = request.session['user_id']
+        data = Customer.objects.get(id=user_id)
+        userdata = {
+            'id': data.id,
+            'name': data.cus_name,
+            'email': data.cus_email
+        }
+        return render(request, "comman.html", {'userdata': userdata})
+    else:
+        return render(request, "comman.html") 
 
 def mens(request):
     return render(request,"mens.html")

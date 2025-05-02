@@ -11,4 +11,4 @@ class Mainmodel(models.Model):
 
 class ProxyModel(Mainmodel):
     class Meta:
-        proxy = True
+        proxy = True  

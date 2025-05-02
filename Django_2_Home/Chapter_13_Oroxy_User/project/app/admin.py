@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Mainmodel,ProxyModel
+from .models import MainModel,ProxyModel
 # Register your models here.
 
-admin.site.register(Mainmodel)
+
+admin.site.register(MainModel)
 admin.site.register(ProxyModel)
