@@ -21,3 +21,5 @@ urlpatterns = [
     path('electranics/<int:pk>',views.electranics1,name='electranics1'),
     path('grousary/<int:pk>',views.grousary1,name='grousary1'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

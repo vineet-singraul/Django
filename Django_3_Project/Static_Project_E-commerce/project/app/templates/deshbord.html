@@ -15,14 +15,14 @@
   <div class="dashboard-nav">
     <div class="user-profile">
       <div class="profile-img">
-        {% if data.image %}
-          <img src="{{ data.image }}" alt="User Image">
+        {% if userdata.cus_image %}
+          <img src="{{userdata.cus_image.url}}" alt="User Image">
         {% else %}
           <div class="initials">{{ data.cstmer_name|first|upper }}</div>
         {% endif %}
       </div>
-      <p id="deshKap">{{ data.name }}</p>
-      <p>{{ data.email }}</p>
+      <p id="deshKap">{{userdata.cus_name}}</p>
+      <p>{{userdata.cus_email}}</p>
     </div>
 
     <nav class="nav-menu">
@@ -33,14 +33,14 @@
       <a href="#"><i class="fas fa-user"></i> My Profile</a>
       <a href="#"><i class="fas fa-map-marker-alt"></i> My Address</a>
       <a href="#"><i class="fas fa-gift"></i> My Offers</a>
-      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="{% url 'home' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
   </div>
 
   <!-- Main Content -->
   <div class="dashboard-content">
     <header class="content-header">
-      <h1>Welcome Back, {{ userSendingData.show_name }}</h1>
+      <h1>Welcome Back, {{userdata.cus_name}}</h1>
       <div class="search-box">
         <input type="text" placeholder="Search...">
         <i class="fas fa-search"></i>

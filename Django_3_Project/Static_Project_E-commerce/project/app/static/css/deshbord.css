@@ -16,6 +16,7 @@ body {
 }
 
 .modern-dashboard {
+    /* width: 100vw; */
     display: flex;
     min-height: 100vh;
     flex-direction: row;

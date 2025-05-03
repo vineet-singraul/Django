@@ -8,14 +8,20 @@
 body {
     background-color: #0066ff;
     font-family: 'Poppins', sans-serif;
+    height: auto;
 }
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(90deg, #00022b, #6d1b5b);
+    background: linear-gradient(90deg, #001254, #6d1b5b);
     padding: 1rem 2rem;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 6px 15px rgb(0, 0, 0);
+    position:sticky;
+    top: 0;
+    left: 0;
+    right:0;
+    z-index: 100;
 }
 
 /* ++++ Web Logo Ke liye ++++*/
@@ -33,12 +39,13 @@ body {
 
 .logoImg2{
     position: relative;
-    top: -8px;
-    width: 100px;
-    height: 30px;
+    top: 4px;
+    font-size: smaller;
+    width: 112px;
+    height: 58px;
+    left: -12px;
+    border-radius: 67px;
 }
-
-
 
 /* Navbar Links */
 .navbar-nav .nav-link {
