@@ -1,4 +1,3 @@
-/* Reset and Base */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     height: auto;
 }
 
-/* Navbar */
 .navbar {
     background: linear-gradient(90deg, #001254, #6d1b5b);
     padding: 1rem 2rem;
@@ -23,6 +21,7 @@ body {
     right:0;
     z-index: 100;
 }
+
 
 /* ++++ Web Logo Ke liye ++++*/
 #LogoDiv {
@@ -46,8 +45,6 @@ body {
     left: -12px;
     border-radius: 67px;
 }
-
-/* Navbar Links */
 .navbar-nav .nav-link {
     color: #ffffff;
     font-weight: 600;
@@ -67,7 +64,8 @@ body {
 
 
 
-/* Dropdown Menu */
+
+
 .navbar-nav .dropdown-menu {
     background-color: #2c00cb;
     border: none;
@@ -86,9 +84,6 @@ body {
     background-color: #a2007f;
     color: #2300ae;
 }
-
-
-/* Cart Icon */
 #cartDiv {
     color: #ffffff;
     font-size: 1.3rem;
@@ -106,9 +101,6 @@ body {
 #cartDiv:hover {
     color: #ff69b4;
 }
-
-
-/* Navbar Toggler (Mobile) */
 .navbar-toggler {
     border: none;
     background-color: transparent;
@@ -118,8 +110,6 @@ body {
     color: #ffffff;
     font-size: 1.5rem;
 }
-
-/* Mobile Menu */
 @media (max-width: 991px) {
     .navbar-nav {
         background: #0a0f5a;

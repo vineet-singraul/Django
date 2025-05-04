@@ -1,10 +1,241 @@
+
 {% extends "comman.html" %}
+ 
+{% load static %}
 
 {% block title %}
-    kides
-{% endblock  %}
+kides
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
 
 
 {% block content %}
-    <h1>kides</h1>
-{% endblock  %}
+<div id="mainCardDiv">
+
+    <!-- CARD 1 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids1.jpg" alt="Kids' T-Shirt">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Colorful cotton T-shirt, perfect for playtime and casual wear.</p>
+                <strong class="nameProduct">Kids' T-Shirt</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹800</p>
+                <p class="offerPrice">off-25%</p>
+                <p class="privePrice"><s>₹1,070</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids2.jpg" alt="Kids' Jeans">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Durable denim jeans for kids, comfortable and stylish.</p>
+                <strong class="nameProduct">Kids' Jeans</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,200</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹1,700</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids3.jpg" alt="Kids' Sneakers">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Lightweight sneakers for kids, ideal for running and sports.</p>
+                <strong class="nameProduct">Kids' Sneakers</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,800</p>
+                <p class="offerPrice">off-35%</p>
+                <p class="privePrice"><s>₹2,800</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids4.jpg" alt="Kids' Backpack">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Cute and spacious backpack, great for school or travel.</p>
+                <strong class="nameProduct">Kids' Backpack</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,500</p>
+                <p class="offerPrice">off-40%</p>
+                <p class="privePrice"><s>₹2,500</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids5.jpg" alt="Kids' Hat">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Fun and colorful hat, provides sun protection and style.</p>
+                <strong class="nameProduct">Kids' Hat</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹600</p>
+                <p class="offerPrice">off-20%</p>
+                <p class="privePrice"><s>₹750</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids6.jpg" alt="Kids' Jacket">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Warm and stylish jacket, ideal for outdoor fun in cool weather.</p>
+                <strong class="nameProduct">Kids' Jacket</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹2,000</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹2,850</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids7.jpg" alt="Kids' Raincoat">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Waterproof and lightweight raincoat, keeps kids dry and comfortable.</p>
+                <strong class="nameProduct">Kids' Raincoat</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,300</p>
+                <p class="offerPrice">off-25%</p>
+                <p class="privePrice"><s>₹1,730</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids8.jpg" alt="Kids' Pajamas">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Soft and cozy pajamas set, perfect for a good night's sleep.</p>
+                <strong class="nameProduct">Kids' Pajamas</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹900</p>
+                <p class="offerPrice">off-20%</p>
+                <p class="privePrice"><s>₹1,125</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 9 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids9.jpg" alt="Kids' Toys Set">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Exciting toys set with multiple pieces, encourages creative play.</p>
+                <strong class="nameProduct">Kids' Toys Set</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,600</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹2,300</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 10 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/kids10.jpg" alt="Kids' Lunchbox">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Colorful and durable lunchbox, keeps food fresh and tasty.</p>
+                <strong class="nameProduct">Kids' Lunchbox</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹700</p>
+                <p class="offerPrice">off-15%</p>
+                <p class="privePrice"><s>₹825</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

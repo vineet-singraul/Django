@@ -1,10 +1,295 @@
 {% extends "comman.html" %}
+ 
+{% load static %}
 
 {% block title %}
-    womens
-{% endblock  %}
+womens
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
 
 
 {% block content %}
-    <h1>womens</h1>
-{% endblock  %}
+<div id="mainCardDiv">
+
+    <!-- CARD 1 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies1.jpg" alt="Floral Summer Dress">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Lightweight floral summer dress, perfect for casual outings and
+                    picnics.</p>
+                <strong class="nameProduct">Floral Summer Dress</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹2,500</p>
+                <p class="offerPrice">off-40%</p>
+                <p class="privePrice"><s>₹4,200</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies2.jpg" alt="Elegant Evening Gown">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Elegant floor-length gown, ideal for formal events and parties.
+                </p>
+                <strong class="nameProduct">Elegant Evening Gown</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹6,500</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹9,000</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies3.jpg" alt="Women's Leather Handbag">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Premium leather handbag with spacious compartments and stylish
+                    design.</p>
+                <strong class="nameProduct">Women's Leather Handbag</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹4,200</p>
+                <p class="offerPrice">off-35%</p>
+                <p class="privePrice"><s>₹6,500</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies4.jpg" alt="Luxury Women's Watch">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Elegant luxury wristwatch with rose gold finish and crystal
+                    accents.</p>
+                <strong class="nameProduct">Luxury Women's Watch</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹8,200</p>
+                <p class="offerPrice">off-40%</p>
+                <p class="privePrice"><s>₹13,500</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies5.jpg" alt="Ladies Running Shoes">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Lightweight running shoes for women, with breathable fabric and
+                    cushioned sole.</p>
+                <strong class="nameProduct">Ladies Running Shoes</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹3,200</p>
+                <p class="offerPrice">off-25%</p>
+                <p class="privePrice"><s>₹4,300</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies6.jpg" alt="Gold-Plated Jewelry Set">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Elegant gold-plated necklace and earring set, perfect for
+                    weddings and events.</p>
+                <strong class="nameProduct">Gold-Plated Jewelry Set</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹5,800</p>
+                <p class="offerPrice">off-50%</p>
+                <p class="privePrice"><s>₹11,600</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies7.jpg" alt="Makeup Kit">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Complete makeup kit with foundation, eyeshadow, lipstick, and
+                    brushes.</p>
+                <strong class="nameProduct">Makeup Kit</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹2,900</p>
+                <p class="offerPrice">off-45%</p>
+                <p class="privePrice"><s>₹5,300</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies8.jpg" alt="Ladies Sunglasses">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Trendy ladies sunglasses with UV protection and stylish frame
+                    design.</p>
+                <strong class="nameProduct">Ladies Sunglasses</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,800</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹2,600</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 9 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies9.jpg" alt="Women's Perfume">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Premium women’s perfume with long-lasting floral and fruity
+                    notes.</p>
+                <strong class="nameProduct">Women's Perfume</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹3,900</p>
+                <p class="offerPrice">off-35%</p>
+                <p class="privePrice"><s>₹6,000</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 10 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies10.jpg" alt="Women's Scarf Set">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Soft and stylish scarf set in vibrant colors, perfect for all
+                    seasons.</p>
+                <strong class="nameProduct">Women's Scarf Set</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹1,200</p>
+                <p class="offerPrice">off-50%</p>
+                <p class="privePrice"><s>₹2,400</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 11 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies11.jpg" alt="Ladies Sandals">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Comfortable and stylish ladies sandals, suitable for daily wear.
+                </p>
+                <strong class="nameProduct">Ladies Sandals</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹2,100</p>
+                <p class="offerPrice">off-40%</p>
+                <p class="privePrice"><s>₹3,500</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 12 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/ledies12.jpg" alt="Women's Sportswear Set">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Breathable and flexible sportswear set for women, perfect for
+                    workouts.</p>
+                <strong class="nameProduct">Women's Sportswear Set</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹3,500</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹5,000</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

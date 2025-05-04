@@ -1,10 +1,192 @@
 {% extends "comman.html" %}
-
+{% load static %}
 {% block title %}
     grousary
 {% endblock  %}
 
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
 
 {% block content %}
-    <h1>grousary</h1>
+<div id="mainCardDiv">
+
+    <!-- CARD 1 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery1.jpg" alt="Organic Rice">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">High-quality organic basmati rice, aromatic and long-grained.</p>
+                <strong class="nameProduct">Organic Basmati Rice</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹800</p>
+                <p class="offerPrice">off-20%</p>
+                <p class="privePrice"><s>₹1,000</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery2.jpg" alt="Sunflower Oil">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Refined sunflower oil, light and healthy for everyday cooking.</p>
+                <strong class="nameProduct">Sunflower Oil 1L</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹160</p>
+                <p class="offerPrice">off-15%</p>
+                <p class="privePrice"><s>₹190</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery3.jpg" alt="Whole Wheat Flour">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Fresh whole wheat flour for soft, fluffy chapatis and breads.</p>
+                <strong class="nameProduct">Whole Wheat Flour 5kg</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹250</p>
+                <p class="offerPrice">off-25%</p>
+                <p class="privePrice"><s>₹335</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery4.jpg" alt="Sugar">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Fine white sugar, perfect for sweetening beverages and baking.</p>
+                <strong class="nameProduct">Refined Sugar 1kg</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹50</p>
+                <p class="offerPrice">off-10%</p>
+                <p class="privePrice"><s>₹55</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery5.jpg" alt="Tea Powder">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Premium tea powder for a rich and refreshing taste every morning.</p>
+                <strong class="nameProduct">Premium Tea 500g</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹280</p>
+                <p class="offerPrice">off-18%</p>
+                <p class="privePrice"><s>₹340</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery6.jpg" alt="Milk Pack">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Fresh full-cream milk, rich in calcium and nutrients.</p>
+                <strong class="nameProduct">Milk Pack 1L</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹60</p>
+                <p class="offerPrice">off-8%</p>
+                <p class="privePrice"><s>₹65</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery7.jpg" alt="Lentils">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Organic yellow lentils, rich in protein and perfect for everyday meals.</p>
+                <strong class="nameProduct">Yellow Lentils 1kg</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹120</p>
+                <p class="offerPrice">off-22%</p>
+                <p class="privePrice"><s>₹155</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div id="cardDiv">
+        <div class="imageDiv">
+            <img src="../static/image/grocery8.jpg" alt="Cooking Spices">
+        </div>
+        <div id="detailesDiv">
+            <div class="paradetailesDiv">
+                <p class="paradet">Assorted cooking spices set to elevate the flavor of your dishes.</p>
+                <strong class="nameProduct">Spice Pack 250g</strong>
+            </div>
+            <div class="offerDiv">
+                <p class="currPrice">₹350</p>
+                <p class="offerPrice">off-30%</p>
+                <p class="privePrice"><s>₹500</s></p>
+            </div>
+            <div class="buttonDiv">
+                <button class="addToCardbtn">Add to Cart</button>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock  %}
