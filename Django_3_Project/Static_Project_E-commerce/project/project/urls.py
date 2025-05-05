@@ -20,6 +20,7 @@ urlpatterns = [
     path('kides/<int:pk>',views.kides1,name='kides1'),
     path('electranics/<int:pk>',views.electranics1,name='electranics1'),
     path('grousary/<int:pk>',views.grousary1,name='grousary1'),
+    path('deshbord/<int:pk>/', views.deshbord, name='deshbord')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

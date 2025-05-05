@@ -76,6 +76,14 @@
                                     <a class="dropdown-item" aria-current="page"
                                         href="{% url 'home' %}">Logout</a>
                                 </li>
+
+                                <li class="nav-item">
+                                  {% if userdata %}
+                                    <a class="dropdown-item" aria-current="page" href="{% url 'deshbord' pk=userdata.id %}">My Profile</a>
+                                   {% else %}
+                                     <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                                   {% endif %}
+                                </li>
                             </ul>
                         </li>
 
@@ -135,7 +143,9 @@
                                 <li class="nav-item">
                                      <a class="dropdown-item" href="{% url 'home' %}">Logout</a>
                                 </li>
-                            
+                                <li class="nav-item">
+                                    <a class="dropdown-item" href="{% url 'login' %}">My Profile</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -167,9 +177,86 @@
         {% endblock %}
     </div>
 
-    <footer style="background-color: #333; color: white; text-align: center; padding: 10px; height:auto">
+<footer class="text-center text-lg-start bg-dark text-white pt-4">
+    <div class="container text-center text-md-start">
+        <div class="row mt-3">
+            <!-- Company info -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-gem me-3"></i>Your Company
+                </h6>
+                <p>
+                    Bringing you the best products for men, women, kids, electronics, and grocery. Shop with confidence and style!
+                </p>
+            </div>
+
+            <!-- Quick links -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class="text-uppercase fw-bold mb-4">Categories</h6>
+                <p><a href="#" class="text-reset">Mens</a></p>
+                <p><a href="#" class="text-reset">Womens</a></p>
+                <p><a href="#" class="text-reset">Kids</a></p>
+                <p><a href="#" class="text-reset">Electronics</a></p>
+                <p><a href="#" class="text-reset">Grocery</a></p>
+            </div>
+
+            <!-- Useful links -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
+                <p><a href="#" class="text-reset">Your Account</a></p>
+                <p><a href="#" class="text-reset">Orders</a></p>
+                <p><a href="#" class="text-reset">Wishlist</a></p>
+                <p><a href="#" class="text-reset">Help</a></p>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                <p><i class="fas fa-home me-3"></i> 1234 Main St, Your City, Country</p>
+                <p><i class="fas fa-envelope me-3"></i> support@yourcompany.com</p>
+                <p><i class="fas fa-phone me-3"></i> +123 456 7890</p>
+                <p><i class="fas fa-print me-3"></i> +123 456 7891</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter & Socials -->
+    <div class="container mt-4">
+        <form class="row g-3 justify-content-center">
+            <div class="col-auto">
+                <input type="email" class="form-control" placeholder="Subscribe to our newsletter">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Subscribe</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Social icons -->
+    <div class="text-center py-3">
+        <a href="#" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" class="text-white me-4">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2025 Your Company Name. All rights reserved.
-      </footer>
+    </div>
+</footer>
+
       
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -252,8 +252,8 @@ body {
 @media (max-width: 768px) {
     .profile-img {
         position: relative;
-        top: 20px;
-        left: -183px;
+        top: 40px;
+        left: -123px;
     }
 
     .modern-dashboard {
@@ -301,15 +301,16 @@ body {
     .user-profile h3, .user-profile p {
         margin: 0.25rem 0;
         position: relative;
-        top: -70px;
-        left: -50px;
+        top: -36px;
+        left: 1px;
         font-size: 12px;
     }
     #deshKap {
         color: rgb(174, 0, 162);
         position: relative;
-        left: -64px;
+        left: -43px;
         font-size: 20px;
+        TOP: -38px;
     }
 
 }

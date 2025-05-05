@@ -4,16 +4,6 @@ from .models import Customer
 
 
 def home(request):
-    # if 'user_id' in request.session:
-    #     user_id = request.session['user_id']
-    #     data = Customer.objects.get(id=user_id)
-    #     userdata = {
-    #         'id': data.id,
-    #         'name': data.cus_name,
-    #         'email': data.cus_email
-    #     }
-    #     return render(request, "comman.html", {'userdata': userdata})
-    # else:
     return render(request, "home.html") 
 
 def mens(request):
@@ -145,3 +135,12 @@ def electranics1(request,pk):
 def grousary1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'grousary.html',{'userdata':userdata})
+
+
+def deshbord(request, pk):
+    try:
+        userdata = Customer.objects.get(id=pk)
+    except Customer.DoesNotExist:
+        return redirect('login')  # Redirect to login if user does not exist
+
+    return render(request, "deshbord.html", {'userdata': userdata})
