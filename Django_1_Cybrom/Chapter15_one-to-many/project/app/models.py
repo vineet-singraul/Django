@@ -34,3 +34,17 @@ class Student(models.Model):
         on_delete=models.PROTECT,
         to_field='dep_name'
     )
+
+
+
+class Fule(models.Model):
+    Fule_name = models.CharField(max_length=50,unique=True)
+    def __str__(self):
+        return self.Fule_name
+
+
+class Vehicles(models.Model):
+    Vehicles_name = models.CharField(max_length=50)
+    Fule_name = models.ManyToManyField(Fule,related_name='vehical')
+    def __str__(self):
+        return self.Vehicles_name

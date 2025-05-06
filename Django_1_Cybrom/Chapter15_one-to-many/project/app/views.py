@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import User
+from .models import User,Department
 # Create your views here.
 
 def Student(request):
@@ -17,3 +17,25 @@ def Student(request):
     # print(data1.aadhar_no)
     print(data1.aadhar_no.aadhar)
     print(data1.aadhar_no.created_by)
+
+
+
+
+def department(request):
+    data = Department.objects.all()
+    print(data)
+    print(data.values())
+    print(data.values_list())
+
+    dep_data = Department.objects.get(id=1)
+    print(dep_data.id)
+    print(dep_data.dep_name)
+    print(dep_data.dep_des)
+    print(dep_data.dep_hod)
+
+    print(dep_data.depart.all().count())
+    x = dep_data.depart.all()
+    print(x)
+
+
+
