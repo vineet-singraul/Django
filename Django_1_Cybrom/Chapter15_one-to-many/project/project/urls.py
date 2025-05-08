@@ -23,3 +23,4 @@ urlpatterns = [
     path('department/',views.department,name='department')
     path('vehicals/',views.vehicals,name='vehicals')
 ]
+

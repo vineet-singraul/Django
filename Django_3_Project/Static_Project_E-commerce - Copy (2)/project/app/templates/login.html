@@ -1,0 +1,47 @@
+
+{% load static %}
+
+
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+<a id="BackButton"  href="{% url 'home' %}" class="login-link">Back</a>
+<div class="page-container" id="logDiv">
+  <form method="post" action="{% url 'login' %}" class="registration-form">
+    {% csrf_token %}
+
+   {% if msg %}
+    <div id="msgShow">
+      <strong id="msgPara">{{msg}}</strong>
+    </div>
+   {% endif %}
+
+    <div class="form-columns">
+
+      <div class="form-col">
+        <div class="input-container">
+          <label for="username">Email Address:</label>
+          <input type="email" id="email" name="email" value="{{userdata.cus_email}}" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-container">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="login-prompt" style="margin-top: 30px;">
+          <span>Don't have an account?</span>
+          <a href="{% url 'signup' %}" class="login-link">Sign up here</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="submit-btn">Login</button>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

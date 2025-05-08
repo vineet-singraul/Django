@@ -253,7 +253,7 @@ body {
     .profile-img {
         position: relative;
         top: 40px;
-        left: -123px;
+        left: -90px;
     }
 
     .modern-dashboard {
@@ -302,15 +302,15 @@ body {
         margin: 0.25rem 0;
         position: relative;
         top: -36px;
-        left: 1px;
+        left:40px;
         font-size: 12px;
+        font-family: monospace;
     }
     #deshKap {
         color: rgb(174, 0, 162);
         position: relative;
-        left: -43px;
+        left: -7px;
         font-size: 20px;
         TOP: -38px;
     }
-
 }
