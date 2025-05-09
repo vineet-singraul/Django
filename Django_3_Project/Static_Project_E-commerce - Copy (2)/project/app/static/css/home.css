@@ -45,8 +45,9 @@
         background: red;
     }
 
-    .carousel-item img{
+    .carousel-item img {
         background: red;
+        height: 140px;
     }
 
 }

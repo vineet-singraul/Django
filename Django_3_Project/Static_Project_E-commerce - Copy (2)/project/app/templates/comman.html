@@ -12,11 +12,16 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <link rel="icon" href="../static/image/T1.png" type="icon">
+
     <title>
         {% block title %}
         home
         {% endblock %}
     </title>
+
+    
 
     {% load static %}
 
@@ -68,7 +73,7 @@
                             href="{% url 'grousary1' pk=userdata.id %}">Grousary</a>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <form  class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
