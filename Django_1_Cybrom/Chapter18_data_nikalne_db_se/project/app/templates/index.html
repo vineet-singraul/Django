@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <a href="{% url 'first' %}">First</a>
+            <a href="#">Last</a>
+            <a href="#">First 5</a>
+            <a href="#">Last 5</a>
+            <a href="#">Ascending</a>
+            <a href="#">Descending</a>
+            <a href="#">All</a>
+        </div>
+        <div class="right">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Email</th>
+                </tr>
+                
+                <tr>
+                    <td>{{ data.name}}</td>
+                    <td>{{ data.city}}</td>
+                    <td>{{ data.email}}</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</body>
+</html>
