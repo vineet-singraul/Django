@@ -1,0 +1,405 @@
+{% extends "comman.html" %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% load static %}
+
+{% block title %}
+    home
+{% endblock  %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% comment %} ++++  Website ka crousal effect code +++++++ {% endcomment %}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/image/ban0.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/image/ban2.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/image/ban3.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban4.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban5.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban6.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev aage" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next peche" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% comment %} ++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
+
+
+<div id="mainCardDiv">
+
+  <!-- CARD 1 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img1.jpg" alt="Wireless Earbuds">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">High-quality wireless earbuds with noise cancellation and long battery life.</p>
+        <strong class="nameProduct">Wireless Earbuds</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹99</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹129</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img2.jpg" alt="Leather Wallet">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Elegant leather wallet with multiple compartments for cards and cash.</p>
+        <strong class="nameProduct">Leather Wallet</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹59</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹89</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img3.jpg" alt="Men's Jacket">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Stylish men's jacket, perfect for winter with water-resistant fabric.</p>
+        <strong class="nameProduct">Men's Jacket</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹120</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹150</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img4.jpg" alt="Luxury Watch">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Luxury wristwatch with sapphire glass and stainless steel body.</p>
+        <strong class="nameProduct">Luxury Watch</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹250</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹299</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img5.jpg" alt="Running Shoes">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Lightweight running shoes with breathable material and cushioned sole.</p>
+        <strong class="nameProduct">Running Shoes</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹89</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹109</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 6 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img6.jpg" alt="Noise-Canceling Headphones">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Over-ear headphones with advanced noise cancellation and premium sound.</p>
+        <strong class="nameProduct">Noise-Canceling Headphones</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹150</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹180</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 7 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img7.jpg" alt="Digital Camera">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Compact digital camera with 20MP sensor and 4K video recording.</p>
+        <strong class="nameProduct">Digital Camera</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹399</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹450</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 8 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img8.jpg" alt="LED Desk Lamp">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Adjustable LED desk lamp with dimmable brightness and USB charging.</p>
+        <strong class="nameProduct">LED Desk Lamp</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹60</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹79</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 9 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img9.jpg" alt="Nonstick Cookware Set">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Premium nonstick cookware set, includes pots, pans, and utensils.</p>
+        <strong class="nameProduct">Nonstick Cookware Set</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹220</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹260</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 10 -->
+  <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img10.jpg" alt="Silicone Phone Case">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">Durable silicone phone case, shockproof and anti-slip for all models.</p>
+        <strong class="nameProduct">Silicone Phone Case</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹30</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹39</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+    <!-- ORIGINAL 10 CARDS, NOW IN ₹ -->
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img15.jpg" alt="Wireless Earbuds">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">High-quality wireless earbuds with noise cancellation and long battery life.</p>
+          <strong class="nameProduct">Wireless Earbuds</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹8,200</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹10,700</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img11.jpg" alt="Floral Summer Dress">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">Lightweight floral summer dress, perfect for casual outings.</p>
+          <strong class="nameProduct">Floral Summer Dress</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹2,500</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹3,200</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img13.jpg" alt="Elegant Evening Gown">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">Elegant floor-length gown, ideal for formal events and parties.</p>
+          <strong class="nameProduct">Elegant Evening Gown</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹6,500</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹8,000</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img14.jpg" alt="Kids' Party Dress">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">Colorful kids' party dress with soft, breathable fabric.</p>
+          <strong class="nameProduct">Kids' Party Dress</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹1,800</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹2,200</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img12.jpg" alt="Boys' Casual Shirt">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">Comfortable boys' casual shirt, available in multiple colors.</p>
+          <strong class="nameProduct">Boys' Casual Shirt</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹1,200</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹1,500</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+
+    <div id="cardDiv">
+      <div class="imageDiv">
+        <img src="../static/image/img7.jpg" alt="Digital Camera">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">Compact digital camera with 20MP sensor and 4K video recording.</p>
+          <strong class="nameProduct">Digital Camera</strong>
+        </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹399</p>
+          <p class="offerPrice">off-50%</p>
+          <p class="privePrice"><s>₹450</s></p>
+        </div>
+        <div class="buttonDiv">
+          <button class="addToCardbtn">Add to Cart</button>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+    </div>
+    
+</div>
+  
+
+
+
+
+{% endblock  %}
