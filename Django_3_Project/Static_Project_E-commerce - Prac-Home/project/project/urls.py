@@ -25,7 +25,8 @@ urlpatterns = [
     # Query ke liye path
     path('query/<int:pk>',views.query,name='query'),
     path('allquery/<int:pk>',views.allquery,name='allquery'),
-
+    # Edit Ke Liye
+    path('edit/<int:pk>/',views.edit,name='edit'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

@@ -113,6 +113,16 @@
             Query:<input type="text" name="query" id=""><br>
             <input type="submit" value="Query">
           </form>
+           
+          {% elif editdata %}
+            <form action="" method="post">
+            {% csrf_token %}
+            Name:<input type="text" name="name" value="{{editdata.cus_name_q}}" readonly id=""><br>
+            Email:<input type="email" name="email" value="{{editdata.cus_email_q}}" readonly id=""><br>
+            Query:<input type="text" name="query" value="{{editdata.cus_query_q}}" id=""><br>
+            <input type="submit" value="Update Data">
+          </form>
+
           {% elif querydetail %}
           <table border="1">
             <tr>
@@ -120,6 +130,8 @@
               <th>Name</th>
               <th>Email</th>
               <th>Query</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
             {% for i in querydetail %}
             <tr>
@@ -127,6 +139,8 @@
               <td>{{i.cus_name_q}}</td>
               <td>{{i.cus_email_q}}</td>
               <td>{{i.cus_query_q}}</td>
+              <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+              <td><a href="">Delete</a></td>
             </tr>
             {% endfor %}
           </table>

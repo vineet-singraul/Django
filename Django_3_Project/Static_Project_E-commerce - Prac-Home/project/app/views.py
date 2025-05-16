@@ -196,3 +196,12 @@ def allquery(request,pk):
     }
     querydetail = Query.objects.filter(cus_email_q=x)
     return render(request,'deshbord.html',{'userdata':userdata,'querydetail':querydetail})
+
+
+
+def edit(request,pk):
+    editdata = Query.objects.get(id=pk)
+    email = editdata.cus_email_q   # ye query email nikal rahe hai
+    userdata = Customer.objects.get(cus_email=email)
+    return render(request,'deshbord.html',{'userdata':userdata , 'editdata':editdata})
+    

@@ -12,9 +12,6 @@ class Customer(models.Model):
     cus_phone = models.IntegerField()
     cus_location = models.CharField(max_length=50)
 
-
-
-
 class Query(models.Model):
     cus_name_q = models.CharField(max_length=50)
     cus_email_q = models.EmailField()
