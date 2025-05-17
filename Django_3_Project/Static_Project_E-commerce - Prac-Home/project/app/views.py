@@ -147,22 +147,17 @@ def deshbord(request, pk):
 
 
 
-
-
-
 # Query ke liye functions
-
 def query(request, pk):
     user = Customer.objects.get(id=pk)
     userdata = {
         "id": user.id,
-        "username": user.cus_name,
-        "email": user.cus_email,
-        "location": user.cus_location,
-        "image": user.cus_image,
-        "number": user.cus_phone,
+        "cus_name": user.cus_name,
+        "cus_email": user.cus_email,
+        "cus_email": user.cus_email,
+        "cus_image": user.cus_image,
+        "cus_phone": user.cus_phone,
     }
-
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -179,8 +174,6 @@ def query(request, pk):
 
 
 
-
-
 def allquery(request,pk):
     print(pk)
     userdata = Customer.objects.get(id=pk)
@@ -188,11 +181,11 @@ def allquery(request,pk):
     x= userdata.cus_email
     userdata={
         "id":userdata.id,
-        "username":userdata.cus_name,
-        "email":userdata.cus_email,
-        "location":userdata.cus_location,
-        "image":userdata.cus_image,
-        "number":userdata.cus_phone,
+        "cus_name": userdata.cus_name,
+        "cus_email": userdata.cus_email,
+        "cus_email": userdata.cus_email,
+        "cus_image": userdata.cus_image,
+        "cus_phone": userdata.cus_phone,
     }
     querydetail = Query.objects.filter(cus_email_q=x)
     return render(request,'deshbord.html',{'userdata':userdata,'querydetail':querydetail})
@@ -201,7 +194,23 @@ def allquery(request,pk):
 
 def edit(request,pk):
     editdata = Query.objects.get(id=pk)
-    email = editdata.cus_email_q   # ye query email nikal rahe hai
+    email = editdata.cus_email_q   # yaha query model se email nikal rahe hai
     userdata = Customer.objects.get(cus_email=email)
     return render(request,'deshbord.html',{'userdata':userdata , 'editdata':editdata})
     
+
+def quaryupdate(request,pk):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        query = request.POST.get('query')
+        print("..............")
+        old_query = Query.objects.get(id=pk)
+        print("..............",old_query)
+        old_query.cus_name_q = name
+        old_query.cus_email_q = email
+        old_query.cus_query_q = query
+        old_query.save()
+        allquery = Query.objects.filter(cus_email_q=email)
+        userdata = Customer.objects.get(cus_email=email)
+        return render(request,'deshbord.html',{'userdata':userdata,'allquery':allquery})

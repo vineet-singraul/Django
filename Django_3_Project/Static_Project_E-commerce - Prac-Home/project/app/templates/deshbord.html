@@ -108,22 +108,23 @@
         {% if query %}
           <form action="{% url 'query' pk=userdata.id %}" method="post">
             {% csrf_token %}
-            Name:<input type="text" name="name" value="{{userdata.username}}" readonly id=""><br>
-            Email:<input type="email" name="email" value="{{userdata.email}}" readonly id=""><br>
+            Name:<input type="text" name="name" value="{{userdata.cus_name}}" readonly id=""><br>
+            Email:<input type="email" name="email" value="{{userdata.cus_email}}" readonly id=""><br>
             Query:<input type="text" name="query" id=""><br>
             <input type="submit" value="Query">
           </form>
            
           {% elif editdata %}
-            <form action="" method="post">
+            <form action="{% url 'quaryupdate' pk=editdata.id %}" method="post">
             {% csrf_token %}
             Name:<input type="text" name="name" value="{{editdata.cus_name_q}}" readonly id=""><br>
             Email:<input type="email" name="email" value="{{editdata.cus_email_q}}" readonly id=""><br>
             Query:<input type="text" name="query" value="{{editdata.cus_query_q}}" id=""><br>
-            <input type="submit" value="Update Data">
+            <input type="submit" value="Update Query">
           </form>
 
-          {% elif querydetail %}
+
+        {% elif querydetail %}
           <table border="1">
             <tr>
               <th>S.No</th>

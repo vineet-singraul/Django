@@ -27,6 +27,8 @@ urlpatterns = [
     path('allquery/<int:pk>',views.allquery,name='allquery'),
     # Edit Ke Liye
     path('edit/<int:pk>/',views.edit,name='edit'),
+    # vahi edit jo aaya hai update karene ke liye
+    path('quaryupdate/<int:pk>/',views.quaryupdate,name='quaryupdate'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
