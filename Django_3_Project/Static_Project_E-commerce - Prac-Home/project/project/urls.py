@@ -29,6 +29,8 @@ urlpatterns = [
     path('edit/<int:pk>/',views.edit,name='edit'),
     # vahi edit jo aaya hai update karene ke liye
     path('quaryupdate/<int:pk>/',views.quaryupdate,name='quaryupdate'),
+    # Delete Ke Liye
+    path('delete/<int:pk>/',views.delete,name='delete'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

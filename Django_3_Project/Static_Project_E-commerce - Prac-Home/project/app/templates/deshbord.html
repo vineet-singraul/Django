@@ -141,7 +141,7 @@
               <td>{{i.cus_email_q}}</td>
               <td>{{i.cus_query_q}}</td>
               <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
-              <td><a href="">Delete</a></td>
+              <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
             </tr>
             {% endfor %}
           </table>

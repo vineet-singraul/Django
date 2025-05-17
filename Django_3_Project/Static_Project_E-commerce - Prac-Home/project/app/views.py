@@ -214,3 +214,13 @@ def quaryupdate(request,pk):
         allquery = Query.objects.filter(cus_email_q=email)
         userdata = Customer.objects.get(cus_email=email)
         return render(request,'deshbord.html',{'userdata':userdata,'allquery':allquery})
+    
+
+
+def delete(request,pk):
+    deletedata = Query.objects.get(id=pk)
+    email = deletedata.cus_email_q
+    deletedata.delete()
+    allquery = Query.objects.filter(cus_email_q=email)
+    userdata = Customer.objects.get(cus_email=email)
+    return render(request,'deshbord.html',{'allquery':allquery,'userdata':userdata})
