@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Customer,Query
+from django.db.models import Q
 # Create your views here.
 
 
@@ -167,7 +168,7 @@ def query(request, pk):
             cus_email_q=email,
             cus_query_q=query
         )
-        querydetail = Query.objects.filter(cus_email_q=userdata["email"])
+        querydetail = Query.objects.filter(cus_email_q=email)
         return render(request, 'deshbord.html', {'userdata': userdata, 'querydetail': querydetail})
     else:
         return render(request, 'deshbord.html', {'userdata': userdata, 'query': userdata})
@@ -216,7 +217,6 @@ def quaryupdate(request,pk):
         return render(request,'deshbord.html',{'userdata':userdata,'allquery':allquery})
     
 
-
 def delete(request,pk):
     deletedata = Query.objects.get(id=pk)
     email = deletedata.cus_email_q
@@ -224,3 +224,25 @@ def delete(request,pk):
     allquery = Query.objects.filter(cus_email_q=email)
     userdata = Customer.objects.get(cus_email=email)
     return render(request,'deshbord.html',{'allquery':allquery,'userdata':userdata})
+
+
+def search(request, pk):
+    userdata = Customer.objects.get(id=pk)
+    if request.method == "POST":
+        searchData = request.POST.get('search')
+        all_data = Query.objects.filter(
+            Q(cus_name_q__icontains=searchData) |
+            Q(cus_email_q__icontains=searchData) |
+            Q(cus_query_q__icontains=searchData)
+        )
+        return render(request, 'deshbord.html', {'userdata': userdata, 'all_data': all_data,'searchData':searchData})
+    return render(request, 'deshbord.html', {'userdata': userdata, 'querydetail': Query.objects.all()})
+
+
+# deshbord me offer ke liye 
+def offer(request, pk):
+    userdata = Customer.objects.get(id=pk)
+    return render(request, 'deshbord.html', {
+        'userdata': userdata,
+        'offer': True
+    })

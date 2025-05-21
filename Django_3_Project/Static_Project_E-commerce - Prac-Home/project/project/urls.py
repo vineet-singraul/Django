@@ -31,6 +31,12 @@ urlpatterns = [
     path('quaryupdate/<int:pk>/',views.quaryupdate,name='quaryupdate'),
     # Delete Ke Liye
     path('delete/<int:pk>/',views.delete,name='delete'),
+
+    # Search ke liye:
+    path('/<int:pk>/',views.search,name='search'),
+
+    # deshbord me path offer ke liye
+    path('offer/<int:pk>/', views.offer, name='offer')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
