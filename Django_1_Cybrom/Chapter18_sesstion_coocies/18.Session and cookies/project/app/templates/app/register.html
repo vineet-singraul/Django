@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <h1>User registration form </h1>
+  <body>
+  <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+     Username<input type="text" name="user id"/>
+     <br><br>
+     Password<input type="pass"name="p1"/>
+     <br><br>
+     D.o.B<input type="birthday"name="Brithday"/>
+     <br><br>
+     <br>
+     Email ID <input type="email"name="email"/>
+     <br><br>
+     Phone number<input type="num"name="num"/>
+     <br><br>
+     <input type="submit" value="Register">
+   </form>
+  </body>
+</html> 

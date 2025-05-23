@@ -1,0 +1,65 @@
+{% if cart %}
+    {% for i in cart %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{i.item_name}}</h5>
+          <p class="card-text">{{i.item_des}}</p>
+        </div>
+        <h5 class="card-title">{{i.item_price}}</h5>
+        <h5 class="card-title">{{i.item_quantity}}</h5>
+        <div class="card-body">
+          <a href="#" class="card-link">Buy Now</a>
+        </div>
+      </div>
+
+      
+      {% endfor %}
+
+      <h1>Total amount: {{ammount}}</h1>
+      <a href="#" class="card-link">Buy Now</a> 
+{% else %}
+<a href="{% url 'showcards' %}">showcards</a>
+      <form action="{% url 'home1' %}" method="post" enctype="multipart/form-data">
+
+          {% csrf_token %}
+        <label for="Item_name">Item_name:</label>
+        <input type="text" name="Item_name" placeholder="Enter your Item_name">
+        <br>
+
+        <label for="Description">Description:</label>
+        <input type="text" name="Description" placeholder="Enter Description">
+        <br>
+
+        <label for="Price">Price:</label>
+        <input type="number" name="Price" placeholder="Enter Price">
+        <br>
+
+        <label for="Quantity">Quantity:</label>
+        <input type="number" name="Quantity" placeholder="Enter Quantity">
+        <br>
+        
+        <input type="submit" value="Submit">
+
+      </form>
+
+
+      {% if data %}
+      {% for i in data %}
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{i.item_name}}</h5>
+          <p class="card-text">{{i.item_des}}</p>
+        </div>
+        <h5 class="card-title">{{i.item_price}}</h5>
+        <h5 class="card-title">{{i.item_quantity}}</h5>
+        <div class="card-body">
+          <a href="#" class="card-link">Buy Now</a>
+          <a href="{% url 'addcard' pk=i.id %}" class="card-link">Add To Card</a>
+        </div>
+      </div>
+
+      {% endfor %}
+      {% endif %}
+
+{% endif %}
