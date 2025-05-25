@@ -1,0 +1,103 @@
+{% extends "comman.html" %}
+
+{% block content %}
+<center>
+    <h1>Home Page</h1>
+    <a href="{% url 'allquery' %}">Show Table Data</a>
+    <a href="{% url 'inserQuery' %}">Insert Data</a>
+
+    {% if msg %}
+        <h3 style="color: green;">{{ msg }}</h3>
+    {% endif %}
+
+    {% if show_form %}
+    <!-- FORM BLOCK -->
+    <form action="{% url 'inserQuery' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" maxlength="70" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br><br>
+
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image" required><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" maxlength="70" required><br><br>
+
+        <label for="about">About:</label>
+        <input type="text" name="about" id="about" maxlength="70" required><br><br>
+
+        <label for="number">Number:</label>
+        <input type="number" name="number" id="number" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% elif userdata %}
+    <!-- TABLE BLOCK -->
+    <h2>Student Table</h2>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Image</th>
+                <th>City</th>
+                <th>About</th>
+                <th>Number</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in userdata %}
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.email }}</td>
+                <td><img src="{{ data.image.url }}" width="100"></td>
+                <td>{{ data.city }}</td>
+                <td>{{ data.about }}</td>
+                <td>{{ data.number }}</td>
+                <td><a href="{% url 'edit' pk=data.id %}">Edit</a></td>
+                <td><a href="{% url 'delete' pk=data.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% elif editUserdata %}
+    <form action="{% url 'editedData' pk=editUserdata.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="name">Name:</label>
+        <input type="text" name="name" value={{editUserdata.name}} maxlength="70" readonly><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value={{editUserdata.email}}  readonly><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" name="city" value={{editUserdata.city}} maxlength="70" required><br><br>
+
+        <label for="image">Image:</label>
+        <input type="file" name="image" value={{editUserdata.image}} required><br><br>
+
+        <label for="about">About:</label>
+        <input type="text" name="about" value={{editUserdata.about}}  maxlength="70" required><br><br>
+
+        <label for="number">Number:</label>
+        <input type="number" name="number" value={{editUserdata.number}} required><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+
+
+    {% else %}
+    <!-- FALLBACK MESSAGE -->
+    <h3>No data to show</h3>
+    {% endif %}
+</center>
+{% endblock %}

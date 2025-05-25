@@ -88,11 +88,11 @@
 
       {% elif editdata %}
          <form action="{% url 'quaryupdate' pk=editdata.id %}" method="post">
-        {% csrf_token %}
-        Name:<input type="text" name="name" value="{{editdata.cus_name_q}}" readonly id=""><br>
-        Email:<input type="email" name="email" value="{{editdata.cus_email_q}}" readonly id=""><br>
-        Query:<input type="text" name="query" value="{{editdata.cus_query_q}}" id=""><br>
-        <input type="submit" value="Update Query">
+            {% csrf_token %}
+             Name:<input type="text" name="name" value="{{editdata.cus_name_q}}" readonly id=""><br>
+             Email:<input type="email" name="email" value="{{editdata.cus_email_q}}" readonly id=""><br>
+             Query:<input type="text" name="query" value="{{editdata.cus_query_q}}" id=""><br>
+            <input type="submit" value="Update Query">
          </form>
 
 

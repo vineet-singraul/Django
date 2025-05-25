@@ -1,0 +1,50 @@
+{% load static %}  {# This is required to use {% static %} tag #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Home Page</title>
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <h1>Your Home Page</h1>
+    <div class="container">
+        <div class="left">
+            <a href="{% url 'first' %}">First</a>
+            <a href="{% url 'last' %}">Last</a>
+            <a href="{% url 'firstfive' %}">First 5</a>
+            <a href="{% url 'lastfive' %}">Last 5</a>
+            <a href="{% url 'accending' %}">Ascending</a>
+            <a href="{% url 'deaccending' %}">Descending</a>
+        </div>
+        <div class="right">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Email</th>
+                </tr>
+                {% if single %}
+                   <tr>
+                    <th>{{data.name}}</th>
+                    <th>{{data.email}}</th>
+                    <th>{{data.city}}</th>
+                   </tr>
+                {% else %}
+                {% for item in data %}
+                <tr>
+                   <th>{{item.name}}</th>
+                   <th>{{item.email}}</th>
+                   <th>{{item.city}}</th>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

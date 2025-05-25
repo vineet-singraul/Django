@@ -47,3 +47,22 @@ def showcart(request):
         total_ammount += (item.item_quantity*item.item_price)
         all_data.append(item)
     return render(request,'cart.html',{'cart':all_data,'ammount':total_ammount})    
+
+
+
+
+
+def delete(request, pk):
+    cart = request.session.get('cart', [])
+
+    if pk in cart:
+        cart.remove(pk)
+        request.session['cart'] = cart 
+        
+    all_data = []
+    total_amount = 0
+    for i in cart:
+        item = Item.objects.get(id=i)
+        total_amount += item.item_quantity * item.item_price
+        all_data.append(item)
+    return render(request, 'cart.html', {'cart': all_data, 'ammount': total_amount})
