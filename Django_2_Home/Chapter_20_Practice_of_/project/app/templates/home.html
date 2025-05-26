@@ -1,0 +1,99 @@
+{% extends "comman.html" %}
+
+{% block content %}
+<h1>{{ msg }}</h1>
+
+<!-- ✅ Navigation Buttons -->
+<a href="{% url 'inserdata' %}" style="padding:10px 20px; background:blue; color:white; text-decoration:none; border-radius:5px;">
+  Insert Data
+</a>
+
+<a href="{% url 'showtable' %}" style="padding:10px 20px; background:green; color:white; text-decoration:none; border-radius:5px;">
+  Show Data
+</a>
+
+<center>
+<!-- ✅ Show Form -->
+{% if Show %}
+  <form method="POST" enctype="multipart/form-data" action="{% url 'inserdata' %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" maxlength="70" required><br><br>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" maxlength="70" required><br><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select><br><br>
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+    <label for="number">Number:</label>
+    <input type="number" id="number" name="number" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+<!-- ✅ Show Table -->
+{% elif data %}
+  <table border="1" cellpadding="10">
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>Gender</th>
+      <th>Number</th>
+      <th>Email</th>
+      <th>Image</th>
+      <th>EDIT</th>
+      <th>Delete</th>
+    </tr>
+    {% for i in data %}
+      <tr>
+        <td>{{ i.name }}</td>
+        <td>{{ i.city }}</td>
+        <td>{{ i.gender }}</td>
+        <td>{{ i.number }}</td>
+        <td>{{ i.email }}</td>
+        <td><img src="{{ i.image.url }}" alt="Image" width="100"></td>
+        <td><a href="{% url 'editopen' pk=i.id %}">Edit</a></td>
+        <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% elif forEdit %}
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'updateEdited' forEdit.id %}">
+
+    {% csrf_token %}
+
+    <label for="name">Name:</label>
+    <input type="text" value={{forEdit.name}} name="name" maxlength="70" required><br><br>
+
+    <label for="city">City:</label>
+    <input type="text" value={{forEdit.city}} name="city" maxlength="70" required><br><br>
+
+    <label for="image">Image:</label>
+    <input type="file" value={{forEdit.image}} name="image" accept="image/*" required><br><br>
+
+    <label for="number">Number:</label>
+    <input type="number" value={{forEdit.number}} name="number" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" value={{forEdit.email}} name="email" required><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endif %}
+</center>
+{% endblock %}
