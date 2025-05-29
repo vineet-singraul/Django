@@ -17,7 +17,9 @@ def home1(request):
         all_items = Item.objects.all()
         return render(request,'home.html',{'data':all_items})
     else:
-        return render(request,'home.html')
+        return render(request,'home.html') 
+
+
 
 def addcard(request,pk):
     # print(pk)

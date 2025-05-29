@@ -1,0 +1,115 @@
+{% extends "comman.html" %}
+
+{% load static %}
+
+{% block title %}
+  admin
+{% endblock  %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="container">
+    <h2>Insert New Product</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if msg %}
+            <div id="msgShow">
+            <strong id="msgPara">{{msg}}</strong>
+            </div>
+        {% endif %}
+
+        <!-- Left Section -->
+        <div class="form-section">
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" name="product_name" id="product_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product_description">Product Description</label>
+                <textarea name="product_description" id="product_description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_section_2">Description Section 2</label>
+                <textarea name="description_section_2" id="description_section_2" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="previous_price">Previous Price</label>
+                <input type="number" name="previous_price" id="previous_price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="offer_percentage">Offer Percentage (%)</label>
+                <input type="number" name="offer_percentage" id="offer_percentage" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="real_price">Real Price</label>
+                <input type="number" name="real_price" id="real_price" step="0.01" required>
+            </div>
+        </div>
+
+        <!-- Right Section (Images) -->
+        <div class="form-section">
+            <div class="form-group">
+                <label for="image1">Image 1</label>
+                <input type="file" name="image1" id="image1" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="image2">Image 2</label>
+                <input type="file" name="image2" id="image2" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="image3">Image 3</label>
+                <input type="file" name="image3" id="image3" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="image4">Image 4</label>
+                <input type="file" name="image4" id="image4" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="image5">Image 5</label>
+                <input type="file" name="image5" id="image5" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="image6">Image 6</label>
+                <input type="file" name="image6" id="image6" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="db_product_catagurays">Category</label>
+                <select name="db_product_catagurays" id="db_product_catagurays" required>
+                    <option value="">-- Select Category --</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="kids">Kids</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="grocery">Grocery</option>
+                </select>
+            </div>
+        
+        </div>
+
+
+        <!-- Submit Button (Full width) -->
+        <div style="width: 100%;">
+            <button type="submit">Submit Product</button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock  %}

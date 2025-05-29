@@ -1,0 +1,105 @@
+{% extends "comman.html" %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% load static %}
+
+{% block title %}
+    home
+{% endblock  %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+{% comment %} ++++  Website ka crousal effect code +++++++ {% endcomment %}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/image/ban0.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/image/ban2.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/image/ban3.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban4.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban5.png" class="d-block w-100" alt="...">
+    </div>
+        <div class="carousel-item">
+      <img src="../static/image/ban6.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev aage" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next peche" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% comment %} ++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
+
+
+<div id="mainCardDiv">
+
+  <!-- CARD 1 -->
+  {% comment %} <div id="cardDiv">
+    <div class="imageDiv">
+      <img src="../static/image/img1.jpg" alt="Wireless Earbuds">
+    </div>
+    <div id="detailesDiv">
+      <div class="paradetailesDiv">
+        <p class="paradet">High-quality wireless earbuds with noise cancellation and long battery life.</p>
+        <strong class="nameProduct">Wireless Earbuds</strong>
+      </div>
+      <div class="offerDiv">
+        <p class="currPrice">₹99</p>
+        <p class="offerPrice">off-50%</p>
+        <p class="privePrice"><s>₹129</s></p>
+      </div>
+      <div class="buttonDiv">
+        <button class="addToCardbtn">Add to Cart</button>
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </div>
+  </div> {% endcomment %}
+  
+  {% for product in productDetails %}
+<div id="cardDiv">
+  <div class="imageDiv">
+    <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+  </div>
+  <div id="detailesDiv">
+    <div class="paradetailesDiv">
+      <p class="paradet">{{ product.db_product_discription }}</p>
+      <strong class="nameProduct">{{ product.db_product_name }}</strong>
+    </div>
+    <div class="offerDiv">
+      <p class="currPrice">₹{{ product.db_product_real_price }}</p>
+      <p class="offerPrice">off-{{ product.db_product_offer_percentage }}%</p>
+      <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
+    </div>
+    <div class="buttonDiv">
+      <button class="addToCardbtn">Add to Cart</button>
+      <i class="fa-regular fa-heart"></i>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+
+</div>
+  
+
+
+
+
+{% endblock  %}
