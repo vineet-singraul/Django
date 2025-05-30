@@ -24,7 +24,7 @@ def grousary(request):
     return render(request,"grousary.html")
 
 
-
+# LOGIN AND SIGNUP KE LIYE
 def signup(request):
   if request.method == 'POST':  
     name = request.POST.get('name')
@@ -73,11 +73,10 @@ def signup(request):
   else:
       return render(request,"signup.html")  
   
-
-
 def login(request):
     ademail = 'admin@gmail.com'
     adpass = 'admin@123'
+    id = 0 
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -85,12 +84,14 @@ def login(request):
 
         if ademail==email and adpass==password:
             return redirect('adminDeshbord')
+            # return redirect(f'/adminDeshbord/?adpass={adpass}')
        
         if user.exists():
             userdata = Customer.objects.get(cus_email = email)
             sto_pass = userdata.cus_password
 
             if password == sto_pass:
+                request.session['userdata_id'] = userdata.id   #  Session me id Store ker rahe hai 
                 msg = 'password is correct'
                 return render(request,"deshbord.html",{'msg':msg,'userdata':userdata})
 
@@ -143,46 +144,94 @@ def adminDeshbord(request):
             msg = 'Data Inserted Successfully'
         else:
             msg = 'Category not selected. Data not inserted.'
-
     return render(request, "adminDeshbord.html", {'msg': msg})
 
 
+# Add TO Cart Ke Liye Hai Functionallity :
+def addcard(request, pk, jk):
+    print("JK:", jk)
+    cart = request.session.get('cart', [])
+    if pk not in cart:
+        cart.append(pk)
+        request.session['cart'] = cart
+        msg = 'Card Added'
+    else:
+        msg = 'Already Added Data'
+        userdata = Customer.objects.get(id=jk)
+    all_item = DynamicCards.objects.all()
+    return render(request, 'addToCart.html', {'all_item': all_item, 'msg': msg,'userdata':userdata})
 
 
+    
 
-def home1(request,pk):
+
+# Jab user card iconme click karen to function run hoga
+# def showCart(request,pk):
+#     cart = request.session.get('cart',[])
+#     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  : ",cart)
+#     all_Add_Items = []
+#     total_ammount = 0
+#     for i in cart:
+#         all_item = DynamicCards.objects.get(id=i)
+#         total_ammount += all_item.db_product_real_price
+#         all_Add_Items.append(all_item)
+#         userdata = Customer.objects.get(id=pk)
+#         return render(request,'addToCart.html',{'all_Add_Items':all_Add_Items,'userdata':userdata})
+
+
+def showCart(request, pk):
+    cart = request.session.get('cart', [])
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  : ", cart)
+
+    all_Add_Items = []
+    total_ammount = 0
+
+    for i in cart:
+        all_item = DynamicCards.objects.get(id=i)
+        total_ammount += all_item.db_product_real_price
+        all_Add_Items.append(all_item)
+
+    userdata = Customer.objects.get(id=pk)
+    return render(request, 'addToCart.html', {
+        'all_Add_Items': all_Add_Items,
+        'userdata': userdata,
+        'total_ammount': total_ammount
+    })
+
+    
+
+# Jab User Login Ho
+def home1(request, pk):
     userdata = Customer.objects.get(id=pk)
     productDetails = DynamicCards.objects.all()
-    print(productDetails)
-    return render(request,'home.html',{'userdata':userdata,'productDetails':productDetails})
-
+    onlyImage1 = DynamicCards.objects.filter(db_product_catagurays='men').values_list('db_product_image1', flat=True)
+    print(onlyImage1)
+    return render(request, 'home.html', {'userdata': userdata,'productDetails': productDetails,'onlyImage1': onlyImage1})
 
 def mens1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'mens.html',{'userdata':userdata})
 
-
 def womens1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'womens.html',{'userdata':userdata})
-
 
 def kides1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'kides.html',{'userdata':userdata})
 
-
 def electranics1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'electranics.html',{'userdata':userdata})
-
-
 
 def grousary1(request,pk):
     userdata = Customer.objects.get(id=pk)
     return render(request,'grousary.html',{'userdata':userdata})
 
 
+
+
+# User Desh Bord Me Perform 
 def deshbord(request, pk):
     try:
         userdata = Customer.objects.get(id=pk)
@@ -191,9 +240,7 @@ def deshbord(request, pk):
 
     return render(request, "deshbord.html", {'userdata': userdata})
 
-
-
-# Query ke liye functions
+# user ke Desh bord me Query ke liye functions
 def query(request, pk):
     user = Customer.objects.get(id=pk)
     userdata = {
@@ -218,8 +265,6 @@ def query(request, pk):
     else:
         return render(request, 'deshbord.html', {'userdata': userdata, 'query': userdata})
 
-
-
 def allquery(request,pk):
     print(pk)
     userdata = Customer.objects.get(id=pk)
@@ -236,15 +281,12 @@ def allquery(request,pk):
     querydetail = Query.objects.filter(cus_email_q=x)
     return render(request,'deshbord.html',{'userdata':userdata,'querydetail':querydetail})
 
-
-
 def edit(request,pk):
     editdata = Query.objects.get(id=pk)
     email = editdata.cus_email_q   # yaha query model se email nikal rahe hai
     userdata = Customer.objects.get(cus_email=email)
     return render(request,'deshbord.html',{'userdata':userdata , 'editdata':editdata})
     
-
 def quaryupdate(request,pk):
     if request.method=='POST':
         name = request.POST.get('name')
@@ -261,7 +303,6 @@ def quaryupdate(request,pk):
         userdata = Customer.objects.get(cus_email=email)
         return render(request,'deshbord.html',{'userdata':userdata,'allquery':allquery})
     
-
 def delete(request,pk):
     deletedata = Query.objects.get(id=pk)
     email = deletedata.cus_email_q
@@ -269,7 +310,6 @@ def delete(request,pk):
     allquery = Query.objects.filter(cus_email_q=email)
     userdata = Customer.objects.get(cus_email=email)
     return render(request,'deshbord.html',{'allquery':allquery,'userdata':userdata})
-
 
 def search(request, pk):
     userdata = Customer.objects.get(id=pk)
@@ -283,8 +323,7 @@ def search(request, pk):
         return render(request, 'deshbord.html', {'userdata': userdata, 'all_data': all_data,'searchData':searchData})
     return render(request, 'deshbord.html', {'userdata': userdata, 'querydetail': Query.objects.all()})
 
-
-# deshbord me offer ke liye 
+#  user ke Deshbord me offer ke liye 
 def offer(request, pk):
     userdata = Customer.objects.get(id=pk)
     return render(request, 'deshbord.html', {

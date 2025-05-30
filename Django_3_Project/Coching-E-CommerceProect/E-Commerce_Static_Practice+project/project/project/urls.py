@@ -34,7 +34,12 @@ urlpatterns = [
     # Search ke liye:
     path('/<int:pk>/',views.search,name='search'),
     # deshbord me path offer ke liye
-    path('offer/<int:pk>/', views.offer, name='offer')
+    path('offer/<int:pk>/', views.offer, name='offer'),
+    # Add tor cart ke liye id pr path define kiya hai
+    # path('addcard/<int:pk>/',views.addcard,name='addcard'),
+    path('addcard/<int:pk>/<int:jk>/', views.addcard, name='addcard'),
+    # Show Card Ke Liye Hai Ye
+    path('showCart/<int:pk>/',views.showCart,name='showCart'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

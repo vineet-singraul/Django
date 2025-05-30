@@ -104,10 +104,18 @@
 
                     </ul>
                     <div id="cartDiv">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        {% if userdata %}
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'showCart' pk=userdata.id  %}">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        {% endif %}
                     </div>
                 </form>
             </div>
+
             {% else %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -163,7 +171,9 @@
 
                     </ul>
                     <div id="cartDiv">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                            <a href="{% url 'login' %}">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
                     </div>
                 </form>
             </div>

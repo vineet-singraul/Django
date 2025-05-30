@@ -87,8 +87,16 @@
       <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
     </div>
     <div class="buttonDiv">
-      <button class="addToCardbtn">Add to Cart</button>
-      <i class="fa-regular fa-heart"></i>
+      {% comment %} <button class="addToCardbtn"><a href="{% url 'addcard' pk=product.id jk=userdata.id  %}" class="card-link">Add to Cart</a></button>
+      <i class="fa-regular fa-heart"></i> {% endcomment %}
+      {% if userdata %}
+         <a href="{% url 'addcard' pk=product.id jk=userdata.id %}" class="addToCardbtn">Add to Cart</a>
+      {% else %}
+         <button disabled class="addToCardbtn">
+            <a href="{% url 'login' %}" class="addToCardbtn">Add to Cart</a>
+         </button>
+      {% endif %}
+
     </div>
   </div>
 </div>
@@ -99,6 +107,25 @@
 </div>
   
 
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+  <div class="carousel-inner">
+    {% for image_url in onlyImage1 %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="/media/{{ image_url.url }}" class="d-block w-100" alt="Image">
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 
 

@@ -1,0 +1,35 @@
+{% extends "comman.html" %}
+
+{% block title %}
+cart
+{% endblock %}
+
+{% block content %}
+<h1>Cart Page</h1>
+
+
+<div id="mainCardDiv">
+
+<table class="table table-bordered text-center">
+  <thead class="table-dark">
+    <tr>
+      <th>Image</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in all_Add_Items %}
+        <tr>
+          <td> <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}" style="width: 150px; height: auto;"> </td>
+          <td>{{ product.db_product_name }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+</div>
+
+
+
+{% endblock %}
