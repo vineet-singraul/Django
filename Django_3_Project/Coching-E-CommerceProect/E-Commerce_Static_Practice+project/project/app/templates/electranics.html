@@ -12,137 +12,44 @@
 {% block content %}
 <div id="mainCardDiv">
 
-    <!-- CARD 1 -->
+{% comment %} ++++++ DYNAMIC CARDS KE LIYE HAI YE +++++++++ {% endcomment %}
+<div id="mainCardDiv">  
+  {% for product in productDetails %}
     <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics1.jpg" alt="Smartphone">
+      <div class="imageDiv">
+        <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">{{ product.db_product_discription }}</p>
+          <strong class="nameProduct">{{ product.db_product_name }}</strong>
         </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Latest smartphone with powerful processor, high-res camera, and long battery life.</p>
-                <strong class="nameProduct">Smartphone X100</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹49,999</p>
-                <p class="offerPrice">off-20%</p>
-                <p class="privePrice"><s>₹62,499</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹{{ product.db_product_real_price }}</p>
+          <p class="offerPrice">off-{{ product.db_product_offer_percentage }}%</p>
+          <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
         </div>
-    </div>
+        <div class="buttonDiv">
+          {% comment %} <button class="addToCardbtn"><a href="{% url 'addcard' pk=product.id jk=userdata.id  %}" class="card-link">Add to Cart</a></button>
+          <i class="fa-regular fa-heart"></i> {% endcomment %}
+          {% if userdata %}
+            <a href="{% url 'addcard' pk=product.id jk=userdata.id %}" class="addToCardbtn">Add to Cart</a>
+          {% else %}
+            <button disabled class="addToCardbtn">
+            {% if userdata.id %}
+                  <a href="{% url 'addcard' %}" class="addToCardbtn">Add to Cart</a>
+            {% else %}
+                  <a href="{% url 'login' %}" class="addToCardbtn">Add To Cart</a>
+            {% endif %}
+            </button>
+          {% endif %}
 
-    <!-- CARD 2 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics2.jpg" alt="Laptop">
         </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">High-performance laptop with SSD, 16GB RAM, and full HD display.</p>
-                <strong class="nameProduct">UltraBook Pro</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹78,000</p>
-                <p class="offerPrice">off-25%</p>
-                <p class="privePrice"><s>₹1,04,000</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- CARD 3 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics3.jpg" alt="Wireless Earbuds">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Noise-cancelling wireless earbuds with deep bass and long battery life.</p>
-                <strong class="nameProduct">SoundPods Max</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹6,500</p>
-                <p class="offerPrice">off-30%</p>
-                <p class="privePrice"><s>₹9,300</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics4.jpg" alt="Smartwatch">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Water-resistant smartwatch with health tracking and customizable watch faces.</p>
-                <strong class="nameProduct">FitTime Watch</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹12,999</p>
-                <p class="offerPrice">off-35%</p>
-                <p class="privePrice"><s>₹19,999</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 5 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics5.jpg" alt="Bluetooth Speaker">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Portable Bluetooth speaker with rich sound, deep bass, and 12-hour playtime.</p>
-                <strong class="nameProduct">BoomBox 300</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹4,200</p>
-                <p class="offerPrice">off-40%</p>
-                <p class="privePrice"><s>₹7,000</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 6 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/electronics6.jpg" alt="Tablet">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Lightweight tablet with vibrant display, ideal for reading, streaming, and work.</p>
-                <strong class="nameProduct">Tab S Pro</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹29,999</p>
-                <p class="offerPrice">off-28%</p>
-                <p class="privePrice"><s>₹41,500</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
+  {% endfor %}
+</div>
+{% comment %} +++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
 
 </div>
 

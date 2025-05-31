@@ -40,6 +40,8 @@ urlpatterns = [
     path('addcard/<int:pk>/<int:jk>/', views.addcard, name='addcard'),
     # Show Card Ke Liye Hai Ye
     path('showCart/<int:pk>/',views.showCart,name='showCart'),
+    # Cards ko delete karne ke liye :
+    path('cardDelete/<int:pk>/',views.cardDelete,name='cardDelete')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

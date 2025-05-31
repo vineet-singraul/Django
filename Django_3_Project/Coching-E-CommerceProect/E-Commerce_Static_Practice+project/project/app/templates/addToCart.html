@@ -1,35 +1,119 @@
 {% extends "comman.html" %}
+{% load static %}
 
 {% block title %}
 cart
 {% endblock %}
 
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/addToCart.css' %}">
+{% endblock css %}
+
 {% block content %}
-<h1>Cart Page</h1>
+<!-- Lordicon Script (Required for animations) -->
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
+<div class="main-cart-wrapper">
+  <!-- Left: Cart Section -->
+  <div class="cart-left">
+    <div class="cart-header">Shopping Cart</div>
+    <a href="#" class="deselect-link">Deselect all items</a>
 
-<div id="mainCardDiv">
-
-<table class="table table-bordered text-center">
-  <thead class="table-dark">
-    <tr>
-      <th>Image</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
     {% for product in all_Add_Items %}
-        <tr>
-          <td> <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}" style="width: 150px; height: auto;"> </td>
-          <td>{{ product.db_product_name }}</td>
-        </tr>
+    <div class="cart-item">
+      <div class="item-image">
+        <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </div>
+
+      <div class="item-details">
+        <div class="item-title">{{ product.db_product_name }}</div>
+        <div class="item-options">
+          {{ product.db_product_discription }}<br />
+          Category: {{ product.db_product_catagurays }}<br />
+          Offer:
+          <span class="offer-highlight">{{ product.db_product_offer_percentage }}% OFF</span>
+        </div>
+        <label><input type="checkbox" checked> This will be a gift</label>
+        <div class="qty-control">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <div class="cart-actions">
+          <a href="{% url 'cardDelete' pk=product.id %}">Delete</a> |
+          <a href="#">Save for later</a> |
+          <a href="#">Share</a>
+        </div>
+      </div>
+
+      <div class="item-price">
+        <span class="real-price">₹{{ product.db_product_real_price }}</span><br />
+        <span class="old-price">₹{{ product.db_product_previous_price }}</span>
+      </div>
+    </div>
     {% endfor %}
-  </tbody>
-</table>
+  </div>
 
+  <!-- Right: Summary & Suggestions -->
+  <div class="cart-right">
+    <div class="price-summary-fixed">
+      <div class="summary-title">PRICE DETAILS</div>
 
+      <div class="summary-row">
+        <span>Price {{total_item}} items</span>
+        <span>₹{{total_First_amount}}</span>
+      </div>
+
+      <div class="summary-row green">
+        <span>
+          <lord-icon src="https://cdn.lordicon.com/nmguxqka.json" trigger="loop"
+            style="width:24px;height:24px;margin-right:6px;"></lord-icon>
+          Discount
+        </span>
+        <span>- {{total_discount}}</span>
+      </div>
+
+      <div class="summary-row green">
+        <span>
+          <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="loop"
+            style="width:24px;height:24px;margin-right:6px;"></lord-icon>
+          Coupons for you
+        </span>
+        <span>- ₹100</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Platform Fee</span>
+        <span>₹{{total_platformFee}}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>
+          <img src="https://i.pinimg.com/originals/0b/71/dc/0b71dc1a34450f7517c637bf317c66f2.gif"
+            style="width:24px;height:24px;margin-right:6px;vertical-align:middle;">
+          Delivery Charges
+        </span>
+        <span><del style="color: gray;">₹{{total_Delivery_Charges}}</del> <span class="green">Free</span></span>
+      </div>
+
+      <hr />
+
+      <div class="summary-row total">
+        <span>
+          <lord-icon src="https://cdn.lordicon.com/ssvybplt.json" trigger="loop"
+            style="width:24px;height:24px;margin-right:6px;"></lord-icon>
+          Total Amount
+        </span>
+        <span>₹{{total_ammount}}</span>
+      </div>
+
+      <div class="savings-text">
+        <lord-icon src="https://cdn.lordicon.com/cnpvyndp.json" trigger="loop"
+          style="width:24px;height:24px;margin-right:6px;"></lord-icon>
+        You will save <strong>₹{{total_save_ammount}}</strong> on this order
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
 {% endblock %}

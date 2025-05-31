@@ -16,225 +16,44 @@ mens
 {% block content %}
 <div id="mainCardDiv">
 
-    <!-- CARD 1 -->
+{% comment %} ++++++ DYNAMIC CARDS KE LIYE HAI YE +++++++++ {% endcomment %}
+<div id="mainCardDiv">  
+  {% for product in productDetails %}
     <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men1.jpg" alt="Casual Men's T-Shirt">
+      <div class="imageDiv">
+        <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </div>
+      <div id="detailesDiv">
+        <div class="paradetailesDiv">
+          <p class="paradet">{{ product.db_product_discription }}</p>
+          <strong class="nameProduct">{{ product.db_product_name }}</strong>
         </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Comfortable cotton T-shirt, ideal for casual outings and daily wear.</p>
-                <strong class="nameProduct">Casual Men's T-Shirt</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹1,200</p>
-                <p class="offerPrice">off-30%</p>
-                <p class="privePrice"><s>₹1,700</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
+        <div class="offerDiv">
+          <p class="currPrice">₹{{ product.db_product_real_price }}</p>
+          <p class="offerPrice">off-{{ product.db_product_offer_percentage }}%</p>
+          <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
         </div>
-    </div>
+        <div class="buttonDiv">
+          {% comment %} <button class="addToCardbtn"><a href="{% url 'addcard' pk=product.id jk=userdata.id  %}" class="card-link">Add to Cart</a></button>
+          <i class="fa-regular fa-heart"></i> {% endcomment %}
+          {% if userdata %}
+            <a href="{% url 'addcard' pk=product.id jk=userdata.id %}" class="addToCardbtn">Add to Cart</a>
+          {% else %}
+            <button disabled class="addToCardbtn">
+            {% if userdata.id %}
+                  <a href="{% url 'addcard' %}" class="addToCardbtn">Add to Cart</a>
+            {% else %}
+                  <a href="{% url 'login' %}" class="addToCardbtn">Add To Cart</a>
+            {% endif %}
+            </button>
+          {% endif %}
 
-    <!-- CARD 2 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men2.jpg" alt="Men's Formal Shirt">
         </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Elegant formal shirt, perfect for office and formal occasions.</p>
-                <strong class="nameProduct">Men's Formal Shirt</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹2,400</p>
-                <p class="offerPrice">off-35%</p>
-                <p class="privePrice"><s>₹3,700</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- CARD 3 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men3.jpg" alt="Men's Leather Wallet">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Premium leather wallet with multiple compartments and sleek design.</p>
-                <strong class="nameProduct">Men's Leather Wallet</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹1,500</p>
-                <p class="offerPrice">off-40%</p>
-                <p class="privePrice"><s>₹2,500</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men4.jpg" alt="Men's Sports Shoes">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Lightweight sports shoes with cushioned sole, perfect for workouts.</p>
-                <strong class="nameProduct">Men's Sports Shoes</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹3,800</p>
-                <p class="offerPrice">off-25%</p>
-                <p class="privePrice"><s>₹5,100</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 5 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men5.jpg" alt="Men's Watch">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Stylish men's wristwatch with leather strap and classic dial.</p>
-                <strong class="nameProduct">Men's Watch</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹5,500</p>
-                <p class="offerPrice">off-45%</p>
-                <p class="privePrice"><s>₹10,000</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 6 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men6.jpg" alt="Men's Sunglasses">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Trendy men's sunglasses with UV protection and durable frame.</p>
-                <strong class="nameProduct">Men's Sunglasses</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹2,200</p>
-                <p class="offerPrice">off-30%</p>
-                <p class="privePrice"><s>₹3,200</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 7 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men7.jpg" alt="Men's Leather Belt">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Elegant leather belt with sleek buckle, suitable for formal and casual wear.</p>
-                <strong class="nameProduct">Men's Leather Belt</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹1,800</p>
-                <p class="offerPrice">off-35%</p>
-                <p class="privePrice"><s>₹2,800</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 8 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men8.jpg" alt="Men's Hoodie">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Warm and stylish hoodie, perfect for casual wear in cool weather.</p>
-                <strong class="nameProduct">Men's Hoodie</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹2,900</p>
-                <p class="offerPrice">off-40%</p>
-                <p class="privePrice"><s>₹4,800</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 9 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men9.jpg" alt="Men's Jacket">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Durable and stylish men's jacket, ideal for outdoor adventures.</p>
-                <strong class="nameProduct">Men's Jacket</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹4,500</p>
-                <p class="offerPrice">off-50%</p>
-                <p class="privePrice"><s>₹9,000</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- CARD 10 -->
-    <div id="cardDiv">
-        <div class="imageDiv">
-            <img src="../static/image/men10.jpg" alt="Men's Gym Bag">
-        </div>
-        <div id="detailesDiv">
-            <div class="paradetailesDiv">
-                <p class="paradet">Spacious and durable gym bag with multiple compartments and shoulder strap.</p>
-                <strong class="nameProduct">Men's Gym Bag</strong>
-            </div>
-            <div class="offerDiv">
-                <p class="currPrice">₹3,200</p>
-                <p class="offerPrice">off-30%</p>
-                <p class="privePrice"><s>₹4,600</s></p>
-            </div>
-            <div class="buttonDiv">
-                <button class="addToCardbtn">Add to Cart</button>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-        </div>
-    </div>
+  {% endfor %}
+</div>
+{% comment %} +++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
 
 </div>
 {% endblock %}

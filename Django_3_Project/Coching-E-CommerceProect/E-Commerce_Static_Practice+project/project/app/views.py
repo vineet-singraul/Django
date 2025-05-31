@@ -9,16 +9,20 @@ def home(request):
     return render(request, "home.html",{'productDetails':productDetails})
 
 def mens(request):
-    return render(request,"mens.html")
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='men')
+    return render(request,"mens.html",{'productDetails':productDetails})
 
 def womens(request):
-    return render(request,"womens.html")
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='women')
+    return render(request,"womens.html",{'productDetails':productDetails})
 
 def kides(request):
-    return render(request,"kides.html")
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='kids')
+    return render(request,"kides.html",{'productDetails':productDetails})
 
 def electranics(request):
-    return render(request,"electranics.html")
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='electronics')
+    return render(request,"electranics.html",{'productDetails':productDetails})
 
 def grousary(request):
     return render(request,"grousary.html")
@@ -147,6 +151,9 @@ def adminDeshbord(request):
     return render(request, "adminDeshbord.html", {'msg': msg})
 
 
+
+
+
 # Add TO Cart Ke Liye Hai Functionallity :
 def addcard(request, pk, jk):
     print("JK:", jk)
@@ -157,46 +164,54 @@ def addcard(request, pk, jk):
         msg = 'Card Added'
     else:
         msg = 'Already Added Data'
-        userdata = Customer.objects.get(id=jk)
+    userdata = Customer.objects.get(id=jk)
     all_item = DynamicCards.objects.all()
-    return render(request, 'addToCart.html', {'all_item': all_item, 'msg': msg,'userdata':userdata})
-
-
-    
-
+    return render(request, 'addToCart.html', {'all_item':all_item,'msg': msg,'userdata':userdata})
 
 # Jab user card iconme click karen to function run hoga
-# def showCart(request,pk):
-#     cart = request.session.get('cart',[])
-#     print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  : ",cart)
-#     all_Add_Items = []
-#     total_ammount = 0
-#     for i in cart:
-#         all_item = DynamicCards.objects.get(id=i)
-#         total_ammount += all_item.db_product_real_price
-#         all_Add_Items.append(all_item)
-#         userdata = Customer.objects.get(id=pk)
-#         return render(request,'addToCart.html',{'all_Add_Items':all_Add_Items,'userdata':userdata})
-
-
 def showCart(request, pk):
-    cart = request.session.get('cart', [])
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  : ", cart)
-
+    cart = request.session.get('cart', [])  # Session bana rahe hai
     all_Add_Items = []
     total_ammount = 0
+    total_item = 0
+    total_discount = 0
+    total_platformFee = 0
+    total_Delivery_Charges = 0
+    total_First_amount = 0
 
     for i in cart:
+        # Check ker raha hai ki art ki id se item nikal raha hai
         all_item = DynamicCards.objects.get(id=i)
-        total_ammount += all_item.db_product_real_price
-        all_Add_Items.append(all_item)
-
+        all_Add_Items.append(all_item)     # item add ker raha hai list me
+        total_item += 1   # total item nikal rahe hai
+        total_First_amount += all_item.db_product_real_price  # Real ammount nikal rahe hai
+        total_ammount += all_item.db_product_real_price   # real price nikal rahe hai
+        total_discount += all_item.db_product_previous_price - all_item.db_product_real_price   # dicount calculate ker rahe hai
+        total_platformFee += 0.5   # plate form fee include ker rahe hai
+    total_ammount = total_ammount - total_discount + total_platformFee  # total ammount sub kuch - + karne ke baad
+    if total_ammount < 2000:
+        total_Delivery_Charges = 50
+        total_ammount += total_Delivery_Charges
+    else:
+        total_Delivery_Charges = 0
+    total_save_ammount = total_First_amount - total_discount
     userdata = Customer.objects.get(id=pk)
+
     return render(request, 'addToCart.html', {
         'all_Add_Items': all_Add_Items,
         'userdata': userdata,
-        'total_ammount': total_ammount
+        'total_First_amount':total_First_amount,
+        'total_item':total_item,
+        'total_discount':total_discount,
+        'total_ammount':total_ammount,
+        'total_platformFee': int(total_platformFee),
+        'total_Delivery_Charges':total_Delivery_Charges,
+        'total_save_ammount':total_save_ammount
     })
+
+
+def cardDelete(request,pk):
+    print("ccccccccccccccccccc",pk)
 
     
 
@@ -205,28 +220,32 @@ def home1(request, pk):
     userdata = Customer.objects.get(id=pk)
     productDetails = DynamicCards.objects.all()
     onlyImage1 = DynamicCards.objects.filter(db_product_catagurays='men').values_list('db_product_image1', flat=True)
-    print(onlyImage1)
     return render(request, 'home.html', {'userdata': userdata,'productDetails': productDetails,'onlyImage1': onlyImage1})
 
 def mens1(request,pk):
     userdata = Customer.objects.get(id=pk)
-    return render(request,'mens.html',{'userdata':userdata})
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='men')
+    return render(request,'mens.html',{'userdata':userdata,'productDetails':productDetails})
 
 def womens1(request,pk):
     userdata = Customer.objects.get(id=pk)
-    return render(request,'womens.html',{'userdata':userdata})
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='women')
+    return render(request,'womens.html',{'userdata':userdata,'productDetails':productDetails})
 
 def kides1(request,pk):
     userdata = Customer.objects.get(id=pk)
-    return render(request,'kides.html',{'userdata':userdata})
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='kids')
+    return render(request,'kides.html',{'userdata':userdata,'productDetails':productDetails})
 
 def electranics1(request,pk):
     userdata = Customer.objects.get(id=pk)
-    return render(request,'electranics.html',{'userdata':userdata})
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='electronics')
+    return render(request,'electranics.html',{'userdata':userdata,'productDetails':productDetails})
 
 def grousary1(request,pk):
     userdata = Customer.objects.get(id=pk)
-    return render(request,'grousary.html',{'userdata':userdata})
+    productDetails = DynamicCards.objects.filter(db_product_catagurays='electronicsids')
+    return render(request,'grousary.html',{'userdata':userdata,'productDetails':productDetails})
 
 
 
