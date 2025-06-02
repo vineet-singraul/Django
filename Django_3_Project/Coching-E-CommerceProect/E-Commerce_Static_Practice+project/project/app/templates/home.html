@@ -46,13 +46,25 @@
 {% comment %} ++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
 
 
+{% comment %} +++ Message Ke Liye Hai Ye +++ {% endcomment %}
+{% if msg %}
+  <div id="msgShow">
+    <strong id="msgPara">{{msg}}</strong>
+  </div>
+{% endif %}
+{% comment %} +++++++++++++++++++++++++++++++ {% endcomment %}
+
+
 
 {% comment %} ++++++ DYNAMIC CARDS KE LIYE HAI YE +++++++++ {% endcomment %}
 <div id="mainCardDiv">  
   {% for product in productDetails %}
     <div id="cardDiv">
       <div class="imageDiv">
+      <a href="{% url 'showIDdetails' pk=product.id jk=userdata.id|default:0 %}">
         <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </a>
+
       </div>
       <div id="detailesDiv">
         <div class="paradetailesDiv">
@@ -65,8 +77,6 @@
           <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
         </div>
         <div class="buttonDiv">
-          {% comment %} <button class="addToCardbtn"><a href="{% url 'addcard' pk=product.id jk=userdata.id  %}" class="card-link">Add to Cart</a></button>
-          <i class="fa-regular fa-heart"></i> {% endcomment %}
           {% if userdata %}
             <a href="{% url 'addcard' pk=product.id jk=userdata.id %}" class="addToCardbtn">Add to Cart</a>
           {% else %}
@@ -87,27 +97,8 @@
 {% comment %} +++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
   
 
-{% comment %} <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-  <div class="carousel-inner">
-   <h1>{{onlyImage1}}</h1>
-    {% for image_url in onlyImage1 %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <img src="/media/{{ image_url }}" class="d-block w-100" alt="Image">
-      </div>
-    {% endfor %}
-  </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> {% endcomment %}
-
+{% comment %} +++++++ DYNAMIC DATA IMAGE IN CROUSAL +++++++ {% endcomment %}
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
   <div class="carousel-inner">
     {% for image_url in onlyImage1 %}
@@ -125,6 +116,8 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
   </button>
 </div>
+{% comment %} +++++++++++++++++++++++++++++++++++++++++++++ {% endcomment %}
+
 
 
 {% endblock  %}

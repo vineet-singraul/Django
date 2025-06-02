@@ -41,7 +41,7 @@ urlpatterns = [
     # Show Card Ke Liye Hai Ye
     path('showCart/<int:pk>/',views.showCart,name='showCart'),
     # Cards ko delete karne ke liye :
-    path('cardDelete/<int:pk>/',views.cardDelete,name='cardDelete')
+    path('cardDelete/<int:pk>/<int:jk>/',views.cardDelete,name='cardDelete'),
+    # Show Product details jab user kisis card ki image me click karen 
+    path('showIDdetails/<int:pk>/<int:jk>/', views.showIDdetails, name='showIDdetails'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

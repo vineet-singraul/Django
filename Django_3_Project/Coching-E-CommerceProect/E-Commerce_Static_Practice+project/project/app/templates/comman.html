@@ -22,13 +22,12 @@
     </title>
 
     
-
-    {% load static %}
+{% load static %}
 
     {% block css %}
     <link rel="stylesheet" href="{% static 'css/comman.css' %}">
     {% endblock %}
-
+    
 </head>
 
 <body>
@@ -107,8 +106,10 @@
                         {% if userdata %}
                             <a class="nav-link active" aria-current="page"
                                 href="{% url 'showCart' pk=userdata.id  %}">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                                <img id="Cart_Image" src="https://media1.giphy.com/media/giubfaGye5s7IJb47o/giphy.gif"
+                                 style="position: absolute; top: -2px; width: 55px; right: -13px; height: 50px; margin-right: 6px; vertical-align: middle; border: 2px solid; border-radius: 10px;">
                             </a>
+                            <strong id="Quantity_Of_Cart" >11</strong>
                         {% else %}
                             <a class="dropdown-item" href="{% url 'login' %}">Login</a>
                         {% endif %}
@@ -186,6 +187,7 @@
     <div>
         {% block content %}
         <h1>Home</h1>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
         {% endblock %}
     </div>
 

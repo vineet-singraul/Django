@@ -87,8 +87,8 @@ def login(request):
         user = Customer.objects.filter(cus_email = email)
 
         if ademail==email and adpass==password:
-            return redirect('adminDeshbord')
-            # return redirect(f'/adminDeshbord/?adpass={adpass}')
+            # return redirect('adminDeshbord')
+            return redirect(f'/adminDeshbord/?id={id}')
        
         if user.exists():
             userdata = Customer.objects.get(cus_email = email)
@@ -148,25 +148,26 @@ def adminDeshbord(request):
             msg = 'Data Inserted Successfully'
         else:
             msg = 'Category not selected. Data not inserted.'
+            ad = 0
+            adID = request.GET.get(id=ad)
+            print("XXXXXXXXXXXXXXXXXXXX : : XXXXXXX : XXXXXXX : ",adID)
     return render(request, "adminDeshbord.html", {'msg': msg})
-
-
 
 
 
 # Add TO Cart Ke Liye Hai Functionallity :
 def addcard(request, pk, jk):
-    print("JK:", jk)
     cart = request.session.get('cart', [])
     if pk not in cart:
         cart.append(pk)
         request.session['cart'] = cart
-        msg = 'Card Added'
+        msg = 'Item added'
     else:
-        msg = 'Already Added Data'
+        msg = 'Already Added item'
     userdata = Customer.objects.get(id=jk)
     all_item = DynamicCards.objects.all()
     return render(request, 'addToCart.html', {'all_item':all_item,'msg': msg,'userdata':userdata})
+
 
 # Jab user card iconme click karen to function run hoga
 def showCart(request, pk):
@@ -209,11 +210,65 @@ def showCart(request, pk):
         'total_save_ammount':total_save_ammount
     })
 
+# Cart page se jab user Card Delete karen tab
+def cardDelete(request, pk, jk):
+    cart = request.session.get('cart', [])
 
-def cardDelete(request,pk):
-    print("ccccccccccccccccccc",pk)
+    if pk in cart:
+        cart.remove(pk)
+        request.session['cart'] = cart
 
-    
+    all_Add_Items = []
+    total_ammount = 0
+    total_item = 0
+    total_discount = 0
+    total_platformFee = 0
+    total_Delivery_Charges = 0
+    total_First_amount = 0
+
+    for i in cart:
+        try:
+            item = DynamicCards.objects.get(id=i)
+            all_Add_Items.append(item)
+            total_item += 1
+            total_First_amount += item.db_product_previous_price
+            total_ammount += item.db_product_real_price
+            total_discount += item.db_product_previous_price - item.db_product_real_price
+            total_platformFee += 0.5
+        except DynamicCards.DoesNotExist:
+            continue  # Skip if item was deleted from DB
+
+    total_ammount = total_ammount - total_discount + total_platformFee
+
+    if total_ammount < 2000:
+        total_Delivery_Charges = 50
+        total_ammount += total_Delivery_Charges
+
+    total_save_ammount = total_First_amount - total_discount
+
+    try:
+        userdata = Customer.objects.get(id=jk)
+    except Customer.DoesNotExist:
+        userdata = None
+
+    return render(request, 'addToCart.html', {
+        'all_Add_Items': all_Add_Items,
+        'userdata': userdata,
+        'total_First_amount': total_First_amount,
+        'total_item': total_item,
+        'total_discount': total_discount,
+        'total_ammount': total_ammount,
+        'total_platformFee': int(total_platformFee),
+        'total_Delivery_Charges': total_Delivery_Charges,
+        'total_save_ammount': total_save_ammount
+    })
+
+# Show Product detail jab user image me click karen
+def showIDdetails(request, pk, jk):
+    userdata = Customer.objects.get(id=jk)
+    cardDetail = DynamicCards.objects.get(id=pk)
+    discount = cardDetail.db_product_previous_price - cardDetail.db_product_real_price
+    return render(request, 'showIDdetails.html', {'cardDetail': cardDetail, 'discount': discount,'userdata':userdata})
 
 # Jab User Login Ho
 def home1(request, pk):

@@ -17,7 +17,9 @@
   {% for product in productDetails %}
     <div id="cardDiv">
       <div class="imageDiv">
-        <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+        <a href="{% url 'showIDdetails' pk=product.id jk=userdata.id|default:0 %}">
+          <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+        </a>
       </div>
       <div id="detailesDiv">
         <div class="paradetailesDiv">
@@ -30,8 +32,6 @@
           <p class="privePrice"><s>₹{{ product.db_product_previous_price }}</s></p>
         </div>
         <div class="buttonDiv">
-          {% comment %} <button class="addToCardbtn"><a href="{% url 'addcard' pk=product.id jk=userdata.id  %}" class="card-link">Add to Cart</a></button>
-          <i class="fa-regular fa-heart"></i> {% endcomment %}
           {% if userdata %}
             <a href="{% url 'addcard' pk=product.id jk=userdata.id %}" class="addToCardbtn">Add to Cart</a>
           {% else %}

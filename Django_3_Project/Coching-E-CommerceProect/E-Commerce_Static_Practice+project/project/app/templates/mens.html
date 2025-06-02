@@ -21,7 +21,9 @@ mens
   {% for product in productDetails %}
     <div id="cardDiv">
       <div class="imageDiv">
+      <a href="{% url 'showIDdetails' pk=product.id jk=userdata.id|default:0 %}">
         <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </a>
       </div>
       <div id="detailesDiv">
         <div class="paradetailesDiv">

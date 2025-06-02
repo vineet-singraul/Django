@@ -23,7 +23,9 @@ cart
     {% for product in all_Add_Items %}
     <div class="cart-item">
       <div class="item-image">
+      <a href="{% url 'showIDdetails' pk=product.id jk=userdata.id|default:0 %}">
         <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+      </a>
       </div>
 
       <div class="item-details">
@@ -41,7 +43,7 @@ cart
           <button>+</button>
         </div>
         <div class="cart-actions">
-          <a href="{% url 'cardDelete' pk=product.id %}">Delete</a> |
+          <a href="{% url 'cardDelete' pk=product.id jk=userdata.id %}">Delete</a> |
           <a href="#">Save for later</a> |
           <a href="#">Share</a>
         </div>

@@ -240,3 +240,31 @@ footer .text-center.py-3 {
         width: 100%;
     }
 }
+
+
+
+
+#Cart_Image {
+    position: absolute;
+    top: -2px;
+    width: 55px;
+    right: -13px;
+    height: 50px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+
+#Quantity_Of_Cart{
+    position: absolute;
+    top: -17px;
+    right: -22px;
+    color: #ffffff;
+    font-size: 13px;
+    border: 1px solid rgb(0, 0, 0);
+    background: linear-gradient(45deg, #191919, #b09900);
+    border-radius: 10px;
+    padding: 2px;
+}

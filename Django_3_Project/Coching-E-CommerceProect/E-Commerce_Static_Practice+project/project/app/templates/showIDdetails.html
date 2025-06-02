@@ -1,0 +1,135 @@
+{% extends "comman.html" %}
+{% load static %}
+
+{% block title %}
+    home
+{% endblock  %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/showIDdetails.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+    <div class="container">
+        
+        <div class="product-container">
+
+            <!-- Product Images -->
+            <div class="product-images">
+
+                <div class="product-gallery">
+                    <!-- Main Image -->
+                    <div class="main-image" id="zoom-container">
+                        <img src="{{ cardDetail.db_product_image1.url }}" alt="Main Product Image" id="mainImg">
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div class="thumbnail-container">
+                        <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image2.url }}')">
+                            <img src="{{ cardDetail.db_product_image2.url }}" alt="Thumb 1">
+                        </div>
+                        <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image3.url }}')">
+                            <img src="{{ cardDetail.db_product_image3.url }}" alt="Thumb 2">
+                        </div>
+                        <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image4.url }}')">
+                            <img src="{{ cardDetail.db_product_image4.url }}" alt="Thumb 3">
+                        </div>
+                        <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image5.url }}')">
+                            <img src="{{ cardDetail.db_product_image5.url }}" alt="Thumb 4">
+                        </div>
+                                <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image1.url }}')">
+                            <img src="{{ cardDetail.db_product_image1.url }}" alt="Thumb 4">
+                        </div>
+                                <div class="thumbnail" onmouseover="bigImage('{{ cardDetail.db_product_image6.url }}')">
+                            <img src="{{ cardDetail.db_product_image6.url }}" alt="Thumb 4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thumbnail-container">
+                    <button class="showPagebtn">Add To Cart</button>
+                    <button class="showPagebtn">Buy Now</button>
+                </div>
+            </div>
+            
+            <!-- Product Details -->
+            <div class="product-details">
+                <h1 class="product-title" id="productName">{{cardDetail.db_product_name}}</h1>
+                <div class="product-variant" id="productVariant">{{cardDetail.db_product_discription}}</div>
+                
+                <div class="rating-container">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        4.3
+                    </div>
+                    <div class="reviews" id="reviews">10,579 Ratings & 1,285 Reviews</div>
+                </div>
+                
+                <div class="price-container">
+                    <div class="discount-badge">Extra ₹{{cardDetail.db_product_offer_percentage}} off</div>
+                    <div class="price-row">
+                        <div class="current-price" id="currentPrice">₹{{cardDetail.db_product_real_price}}</div>
+                        <div class="original-price" id="originalPrice">₹{{cardDetail.db_product_previous_price}}</div>
+                        <div class="discount-percent" id="discountPercent">{{cardDetail.db_product_offer_percentage}} % off</div>
+                    </div>
+                    <div class="stock-alert">Hurry, Only 8 left!</div>
+                </div>
+                
+                <div class="alternate-payment">
+                    Or Pay <span class="highlight">₹9,699</span> + <span class="highlight">100</span> ✅
+                </div>
+                
+                <h3 class="section-title">Available offers</h3>
+                <div class="offers-container">
+                    <div class="offer-item">
+                        <div class="offer-icon">•</div>
+                        <div class="offer-details">
+                            <span class="offer-title">Special Price</span> Get extra ₹{{discount}} off (price inclusive of cashback/coupon) T&C
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-icon">•</div>
+                        <div class="offer-details">
+                            <span class="offer-title">Bank Offer</span> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card T&C
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-icon">•</div>
+                        <div class="offer-details">
+                            <span class="offer-title">Bank Offer</span> 10% off on Kotak Credit Card Transactions, up to ₹750 on orders of ₹1000 and above T&C
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-icon">•</div>
+                        <div class="offer-details">
+                            <span class="offer-title">Bank Offer</span> 10% off on RBL Credit Card Transactions, up to ₹750 on orders of ₹1000 and above T&C
+                        </div>
+                    </div>
+                    <a href="#" class="view-more">View 24 more offers</a>
+                </div>
+                <div class="product-variant" id="productVariant">{{cardDetail.db_product_discription2}}</div>
+
+            </div>
+
+        </div>
+
+    </div>
+  
+
+    {% comment %} Image Me jab hover karu to image swap ho {% endcomment %}
+    <script>
+        function changeImage(imageUrl) {
+            document.getElementById("mainImg").src = imageUrl;
+        }
+
+function bigImage(imageUrl) {
+    const mainImg = document.getElementById("mainImg");
+    mainImg.src = imageUrl;
+}
+
+   </script>
+
+
+{% endblock  %}
