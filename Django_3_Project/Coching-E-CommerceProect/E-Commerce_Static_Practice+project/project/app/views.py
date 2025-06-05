@@ -6,7 +6,8 @@ from django.db.models import Q
 
 def home(request):
     productDetails = DynamicCards.objects.all()
-    return render(request, "home.html",{'productDetails':productDetails})
+    onlyImage1 = DynamicCards.objects.filter(db_product_catagurays='men').values_list('db_product_image1', flat=True)
+    return render(request, "home.html",{'productDetails':productDetails,'onlyImage1':onlyImage1})
 
 def mens(request):
     productDetails = DynamicCards.objects.filter(db_product_catagurays='men')
@@ -87,8 +88,9 @@ def login(request):
         user = Customer.objects.filter(cus_email = email)
 
         if ademail==email and adpass==password:
-            # return redirect('adminDeshbord')
-            return redirect(f'/adminDeshbord/?id={id}')
+           request.session['admin_id'] = id  # id = 0
+           return redirect('/adminDeshbord/')
+            # return redirect(f'/adminDeshbord/?id={id}')
        
         if user.exists():
             userdata = Customer.objects.get(cus_email = email)
@@ -111,51 +113,7 @@ def login(request):
         return render(request,"login.html")
     
 
-# Admin ke Deh Bord ke liye 
-def adminDeshbord(request):
-    msg = "" 
-    if request.method == 'POST':
-        product_name = request.POST.get('product_name')
-        product_description = request.POST.get('product_description')
-        description_section_2 = request.POST.get('description_section_2')
-        previous_price = request.POST.get('previous_price')
-        offer_percentage = request.POST.get('offer_percentage')
-        product_catagurays = request.POST.get('db_product_catagurays')
-        real_price = request.POST.get('real_price')
-        image1 = request.FILES.get('image1')
-        image2 = request.FILES.get('image2')
-        image3 = request.FILES.get('image3')
-        image4 = request.FILES.get('image4')
-        image5 = request.FILES.get('image5')
-        image6 = request.FILES.get('image6')
-
-        if product_catagurays:
-            DynamicCards.objects.create(
-                db_product_name=product_name,
-                db_product_discription=product_description,
-                db_product_discription2=description_section_2,
-                db_product_previous_price=previous_price,
-                db_product_offer_percentage=offer_percentage,
-                db_product_real_price=real_price,
-                db_product_catagurays=product_catagurays,
-                db_product_image1=image1,
-                db_product_image2=image2,
-                db_product_image3=image3,
-                db_product_image4=image4,
-                db_product_image5=image5,
-                db_product_image6=image6,
-            )
-            msg = 'Data Inserted Successfully'
-        else:
-            msg = 'Category not selected. Data not inserted.'
-            ad = 0
-            adID = request.GET.get(id=ad)
-            print("XXXXXXXXXXXXXXXXXXXX : : XXXXXXX : XXXXXXX : ",adID)
-    return render(request, "adminDeshbord.html", {'msg': msg})
-
-
-
-# Add TO Cart Ke Liye Hai Functionallity :
+# Add TO Cart Ke Liye Hai Functionallity Session Se Data Utha rahe hai  :
 def addcard(request, pk, jk):
     cart = request.session.get('cart', [])
     if pk not in cart:
@@ -269,6 +227,12 @@ def showIDdetails(request, pk, jk):
     cardDetail = DynamicCards.objects.get(id=pk)
     discount = cardDetail.db_product_previous_price - cardDetail.db_product_real_price
     return render(request, 'showIDdetails.html', {'cardDetail': cardDetail, 'discount': discount,'userdata':userdata})
+
+# User Ke Payement Page Ke Liye : 
+def goForPayment(request,pk,cd):
+    userdata = Customer.objects.get(id=pk)
+    cardData = DynamicCards.objects.get(id=cd)
+    return render(request,'goForPayment.html',{'userdata':userdata,'cardData':cardData})
 
 # Jab User Login Ho
 def home1(request, pk):
@@ -404,3 +368,81 @@ def offer(request, pk):
         'userdata': userdata,
         'offer': True
     })
+
+
+
+
+
+
+
+
+
+# Admin ke Deh Bord ke liye 
+def adminDeshbord(request):
+    # sk = request.GET   # admin ki id la raha hai url se
+    # id = sk.get('id')
+    # print("Id xxxxxxxxxx HAI BHAI L : ",id)
+    id = request.session.get('admin_id')    # Admin Ki id session me set ker rahe hai
+    msg = ""
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        product_description = request.POST.get('product_description')
+        description_section_2 = request.POST.get('description_section_2')
+        previous_price = request.POST.get('previous_price')
+        offer_percentage = request.POST.get('offer_percentage')
+        product_catagurays = request.POST.get('db_product_catagurays')
+        real_price = request.POST.get('real_price')
+        image1 = request.FILES.get('image1')
+        image2 = request.FILES.get('image2')
+        image3 = request.FILES.get('image3')
+        image4 = request.FILES.get('image4')
+        image5 = request.FILES.get('image5')
+        image6 = request.FILES.get('image6')
+
+        if product_catagurays:
+            DynamicCards.objects.create(
+                db_product_name=product_name,
+                db_product_discription=product_description,
+                db_product_discription2=description_section_2,
+                db_product_previous_price=previous_price,
+                db_product_offer_percentage=offer_percentage,
+                db_product_real_price=real_price,
+                db_product_catagurays=product_catagurays,
+                db_product_image1=image1,
+                db_product_image2=image2,
+                db_product_image3=image3,
+                db_product_image4=image4,
+                db_product_image5=image5,
+                db_product_image6=image6,
+            )
+            msg = 'Data Inserted Successfully'
+        else:
+            msg = 'Category not selected. Data not inserted.'
+    return render(request, "adminDeshbord.html", {'msg': msg,'id':id})
+
+# admin ke liye home  functions
+def homead(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+   # Admin Ke Liye Hai Ye : 
+    return render(request, "home.html",{'productDetails':productDetails,'id':id})
+
+def mensad(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+    return render(request, "mens.html",{'productDetails':productDetails,'id':id})
+
+def womensad(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+    return render(request, "womens.html",{'productDetails':productDetails,'id':id})
+
+def kidesad(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+    return render(request, "kides.html",{'productDetails':productDetails,'id':id})
+
+def electanicad(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+    return render(request, "electranics.html",{'productDetails':productDetails,'id':id})

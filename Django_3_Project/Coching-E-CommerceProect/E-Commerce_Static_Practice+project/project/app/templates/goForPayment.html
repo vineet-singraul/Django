@@ -1,0 +1,119 @@
+{% extends "comman.html" %}
+{% load static %}
+
+{% block title %}
+payment
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/payment.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+{% comment %} <h1>Payment Page :</h1>
+<h1>{{cardData}}</h1> {% endcomment %}
+
+ <div class="container">
+        <div class="left">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{cardData.db_product_image1.url}}" alt="Flared Lehenga">
+                </div>
+                
+                <div class="product-details">
+                    <h2 class="product-title">{{cardData.db_product_name}}</h2>
+                    <p class="product-description">{{cardData.db_product_discription2}}</p>
+                    
+                    <div class="product-meta">
+                        <span class="product-category">{{cardData.db_product_catagurays}}</span>
+                        <span class="product-offer">{{cardData.db_product_offer_percentage}}% OFF</span>
+                    </div>
+                    
+                    <div class="gift-option">
+                        <input type="checkbox" id="gift" checked>
+                        <label for="gift" class="gift-label">This will be a gift</label>
+                        <div class="message-icon">💬 1</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="action-btn delete-btn">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                        <button class="action-btn save-btn">
+                            <i class="fas fa-bookmark"></i> Save for later
+                        </button>
+                        <button class="action-btn share-btn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="address-section">
+                <div class="section-title">2. DELIVERY ADDRESS</div>
+                <div class="address-container">
+                    <div class="address-card selected">
+                        <div class="address-header">
+                            <div class="address-name">{{userdata.cus_name}}</div>
+                            <div class="address-type">{{userdata.cus_location}}</div>
+                            <div class="address-phone">{{userdata.cus_phone}}</div>
+                        </div>
+                        <div class="address-edit">EDIT</div>
+                        <div class="address-details">
+                            F2/52 kalashi gurjar, F2 53, Vinayak Homes, Ashoka Garden, BHOPAL, Madhya Pradesh - 462023
+                        </div>
+                        <button class="deliver-btn">DELIVER HERE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="login-section">
+                <div class="login-title">1. LOGIN</div>
+                <div class="user-info">
+                    <div class="user-details">
+                        <div class="user-name">{{userdata.cus_name}}</div>
+                        <div class="user-phone">+91{{userdata.cus_phone}}</div>
+                    </div>
+                    <button class="change-btn">CHANGE</button>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <div class="price-container">
+                    <div class="price-title">PRICE DETAILS</div>
+                    
+                    <div class="price-row">
+                        <div class="price-label">Price (1 items)</div>
+                        <div class="price-value">{{cardData.db_product_real_price}}</div>
+                    </div>
+                    
+                    <div class="price-row">
+                        <div class="price-label">Delivery Charges</div>
+                        <div class="price-value">FREE</div>
+                    </div>
+                    
+                    <div class="price-row">
+                        <div class="price-label">Platform Fee</div>
+                        <div class="price-value">4</div>
+                    </div>
+                    
+                    <div class="total-row">
+                        <div class="price-label">Total Payable</div>
+                        <div class="price-value">{{cardData.db_product_real_price}}</div>
+                    </div>
+                    
+                    <div class="savings">
+                        Your Total Savings on this order 199
+                    </div>
+                </div>
+            </div>
+            <button class="place-order-btn">PLACE ORDER</button>
+        </div>
+    </div>
+
+
+{% endblock %}

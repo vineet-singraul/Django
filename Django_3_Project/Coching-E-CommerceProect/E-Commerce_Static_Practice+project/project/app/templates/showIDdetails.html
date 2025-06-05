@@ -50,7 +50,8 @@
 
                 <div class="thumbnail-container">
                     <button class="showPagebtn">Add To Cart</button>
-                    <button class="showPagebtn">Buy Now</button>
+                    {% comment %} YAHA PK USER KE LIYE HAI {% endcomment %}
+                    <button class="showPagebtn"><a href="{% url 'goForPayment' pk=userdata.id cd=cardDetail.id %}">Buy Now</a></button>
                 </div>
             </div>
             
@@ -124,10 +125,10 @@
             document.getElementById("mainImg").src = imageUrl;
         }
 
-function bigImage(imageUrl) {
-    const mainImg = document.getElementById("mainImg");
-    mainImg.src = imageUrl;
-}
+        function bigImage(imageUrl) {
+            const mainImg = document.getElementById("mainImg");
+            mainImg.src = imageUrl;
+        }
 
    </script>
 

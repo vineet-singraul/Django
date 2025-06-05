@@ -45,6 +45,7 @@
                 </span>
             </button>
 
+            {% comment %} ++ USER JUB LOGIN HO TAB KE LIYE HAI YE ++ {% endcomment %}
             {% if userdata %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -116,7 +117,48 @@
                     </div>
                 </form>
             </div>
+ 
+            {% comment %} ++ ADMIN JUB LOGIN HO TAB KE LIYE HAI YE ++ {% endcomment %}
+            {% elif id == 0 %} 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'homead'  %}">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'mensad'  %}">mens
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'womensad'  %}">womens
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'kidesad'  %}">kides
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'electanicad'  %}">electanic
+                        </a>
+                    </li>
+                </ul>
 
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'home' %}">Logout</a>
+                        </li>
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                                href="{% url 'adminDeshbord' %}">Admin</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+            {% comment %} ++ USER JUB LOGIN NA HO TAB KE LIYE HAI YE ++ {% endcomment %}
             {% else %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
