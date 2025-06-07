@@ -420,6 +420,12 @@ def adminDeshbord(request):
             msg = 'Category not selected. Data not inserted.'
     return render(request, "adminDeshbord.html", {'msg': msg,'id':id})
 
+# Admin Me Data Tale ke liye:
+def allAdminData(request):
+    productDetails = DynamicCards.objects.all()
+    id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
+    return render(request, "allAdminData.html",{'productDetails':productDetails,'id':id})
+
 # admin ke liye home  functions
 def homead(request):
     productDetails = DynamicCards.objects.all()
@@ -446,3 +452,52 @@ def electanicad(request):
     productDetails = DynamicCards.objects.all()
     id = request.session.get('admin_id')  # ✅ Get kar rahe ho session se
     return render(request, "electranics.html",{'productDetails':productDetails,'id':id})
+
+def adminCardDelete(request,prodid):
+   cart = DynamicCards.objects.get(id=prodid)
+   cart.delete()
+   productDetails = DynamicCards.objects.all()
+   id = request.session.get('admin_id')
+   return render(request, "allAdminData.html",{'productDetails':productDetails,'id':id} ) 
+
+def adminCardEditRead(request,prodid):
+    cart = DynamicCards.objects.get(id=prodid)
+    id = request.session.get('admin_id')
+    return render(request, "adminDeshbord.html",{'id':id,'cart':cart} ) 
+
+def adminConfirmEditData(request, prodIdEdit):
+    id = request.session.get('admin_id')
+    
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        product_description = request.POST.get('product_description')
+        description_section_2 = request.POST.get('description_section_2')
+        previous_price = request.POST.get('previous_price')
+        offer_percentage = request.POST.get('offer_percentage')
+        product_catagurays = request.POST.get('db_product_catagurays')
+        real_price = request.POST.get('real_price')
+        image1 = request.FILES.get('image1')
+
+        # Get existing product entry safely
+        oldData = DynamicCards.objects.get(id=prodIdEdit)
+        # oldData = get_object_or_404(DynamicCards, id=prodIdEdit)
+
+        # Update fields
+        oldData.db_product_name = product_name
+        oldData.db_product_catagurays = product_catagurays
+        oldData.db_product_discription = product_description
+        oldData.db_product_discription2 = description_section_2
+        oldData.db_product_previous_price = previous_price
+        oldData.db_product_real_price = real_price
+        oldData.db_product_offer_percentage = offer_percentage
+
+        # Only update image if a new one was uploaded
+        if image1:
+            oldData.db_product_image1 = image1
+
+        oldData.save()
+
+        # ✅ Redirect back to the edit page (or any other page you like)
+        return redirect('adminCardEditRead', prodid=prodIdEdit)
+
+

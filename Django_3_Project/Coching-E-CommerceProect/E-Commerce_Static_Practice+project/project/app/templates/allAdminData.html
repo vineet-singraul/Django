@@ -1,0 +1,70 @@
+{% extends "comman.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Product Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Delete Card</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in productDetails %}
+        <tr>
+          <td>
+            <img src="{{ product.db_product_image1.url }}" alt="{{ product.db_product_name }}">
+          </td>
+          <td>{{ product.db_product_name }}</td>
+          <td>{{ product.db_product_catagurays }}</td>
+          <td>{{ product.db_product_discription|truncatewords:7 }}</td>
+          <td><a href="{% url 'adminCardDelete' prodid=product.id %}">Delete</a></td>
+          <td><a href="{% url 'adminCardEditRead' prodid=product.id %}">Edit</a></td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No products found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
+
+{% endblock  %}

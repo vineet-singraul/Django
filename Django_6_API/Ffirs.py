@@ -14,6 +14,6 @@ print(type(json_data))
 json_data1 = '{"name": true, "age": false, "quali": null, "active": "yas"}'
 
 python_data = json.loads(json_data1)
-print(python_data)
+print(python_data)     
 print(type(python_data))
 
