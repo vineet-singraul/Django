@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect # type: ignore
 from .models import Customer,Query,DynamicCards
-from django.db.models import Q
+from django.db.models import Q # type: ignore
 # Create your views here.
 
 

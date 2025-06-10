@@ -192,3 +192,27 @@ lord-icon {
     opacity: 1;
   }
 }
+
+
+.summary-row.total {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#TotalBuyButton {
+  display: inline-block;
+  background:linear-gradient(45deg,#001f3f,rgb(196, 0, 192));
+  color: white;
+  padding: 12px 124px;
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#TotalBuyButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
