@@ -42,6 +42,8 @@ urlpatterns = [
     path('cardDelete/<int:pk>/<int:jk>/',views.cardDelete,name='cardDelete'), # Cards ko delete karne ke liye :
     path('showIDdetails/<int:pk>/<int:jk>/', views.showIDdetails, name='showIDdetails'),  # Single Card ki detail dikhane ke liye
     path('goForPayment/<int:pk>/<int:cd>/',views.goForPayment,name='goForPayment'),  # Card ki -->  pk and user ki --> cd
+    path('buyAllAddToCartItem/<int:pk>/',views.buyAllAddToCartItem,name='buyAllAddToCartItem'),  # Cart Ke Sare Item Kharidne ke liye :
+    # path('ItemIncrementOne/<int:pid>/<int:pk>/',views.ItemIncrementOne,name='ItemIncrementOne'), # AddToCart.html page me item  increment or Decrement
 
     # Admin Deshbord ke liye hai ye code
     path('adminDeshbord/',views.adminDeshbord,name='adminDeshbord'),

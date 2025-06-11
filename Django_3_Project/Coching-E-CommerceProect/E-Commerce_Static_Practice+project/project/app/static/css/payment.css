@@ -49,8 +49,8 @@
         }
         
         .product-image img {
-            /* max-width: 100%; */
-            max-height: 300px;
+            max-width: 100%;
+            /* max-height: 300px; */
             object-fit: contain;
         }
         
@@ -454,3 +454,62 @@
             }
         }
    
+
+.totalDiv {
+    padding: 20px;
+    width: 60vw;
+    background-color: #ebd3d3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .TotalItem,
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .TotalItem strong,
+  .price strong {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .imageDivOfTotal {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+
+  .imageDivOfTotal img {
+    height: 170px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+  }
+
+  .imageDivOfTotal img:hover {
+    transform: scale(1.05);
+  }
+
+  .material-icons {
+    color: #ff4081;
+    font-size: 24px;
+  }
+
+
+ #FaviConIcon{
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}

@@ -234,6 +234,38 @@ def goForPayment(request,pk,cd):
     cardData = DynamicCards.objects.get(id=cd)
     return render(request,'goForPayment.html',{'userdata':userdata,'cardData':cardData})
 
+# AddToCart Ke Sare Item Kharidne Ke Liye :
+def buyAllAddToCartItem(request,pk):
+    userdata = Customer.objects.get(id=pk)
+    cart = request.session.get('cart', [])
+    count = 0
+    price = 0
+    msg = 'All Data'
+    all_data = []
+    totalAmmount = 0
+    for i in cart:
+        data = DynamicCards.objects.get(id=i)
+        all_data.append(data)
+        count = count + 1
+        price = price + data.db_product_real_price
+    if price > 1000:
+        totalAmmount = price + 4 + 29
+    else :
+        totalAmmount = price + 4
+    print("Price : Vala hai YE : ",totalAmmount)
+    print("Price : Vala hai YE : ",price)
+    return render(request,"goForPayment.html",{'userdata':userdata,'msg':msg,'all_data':all_data,'count':count,'price':price,'totalAmmount':totalAmmount})
+
+
+# AddToCart.html me Cart ko (+) se Increment karne ke liye :
+# def ItemIncrementOne(request,pid,pk):
+#     userdata = Customer.objects.get(id=pk)
+#     cart = DynamicCards.objects.get(id=pid)
+#     print("cccccccccccccccccccccccccc")
+#     print(cart)
+#     msg = 'Item Added More One'
+#     return render(request,"addToCart.html",{'msg':msg,'userdata':userdata})
+
 # Jab User Login Ho
 def home1(request, pk):
     userdata = Customer.objects.get(id=pk)

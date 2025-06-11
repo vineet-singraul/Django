@@ -8,20 +8,43 @@ payment
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock css %}
 
 
 {% block content %}
-{% comment %} <h1>Payment Page :</h1>
-<h1>{{cardData}}</h1> {% endcomment %}
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
  <div class="container">
         <div class="left">
             <div class="product-card">
+
+                {% if msg %}
+                <div class="totalDiv">
+                <div class="TotalItem">
+                    <span class="material-icons">
+                        <img id="FaviConIcon" src="https://media.tenor.com/UNHZo457F_kAAAAM/website-welcome.gif" alt="">
+                    </span>
+                    <strong>Total Item Is:</strong>
+                    <strong>{{count}}</strong>
+                </div>
+
+                <div class="imageDivOfTotal">
+                    {% for i in all_data %}
+                    <img src="{{i.db_product_image1.url}}" alt="">
+                    {% endfor %}
+                </div>
+
+                <div class="price">
+                    <img id="FaviConIcon" src="https://assets-v2.lottiefiles.com/a/442c366a-1189-11ee-926a-ff683ce09adf/K9CKtQdK3h.gif" alt="">
+                    <strong>Total Price Is:</strong>
+                    <strong>{{price}}</strong>
+                </div>
+                </div>
+                {% else %}
                 <div class="product-image">
                     <img src="{{cardData.db_product_image1.url}}" alt="Flared Lehenga">
                 </div>
-                
                 <div class="product-details">
                     <h2 class="product-title">{{cardData.db_product_name}}</h2>
                     <p class="product-description">{{cardData.db_product_discription2}}</p>
@@ -49,6 +72,8 @@ payment
                         </button>
                     </div>
                 </div>
+                {% endif %}
+                
             </div>
 
             <div class="address-section">
@@ -82,6 +107,38 @@ payment
                 </div>
             </div>
 
+           {% if msg %}
+            <div class="price-section">
+                <div class="price-container">
+                    <div class="price-title">PRICE DETAILS</div>
+                    
+                    <div class="price-row">
+                        <div class="price-value">Total Item Is </div>
+                        <div class="price-label">{{count}}</div>
+                    </div>
+                    
+                    <div class="price-row">
+                        <div class="price-label">Delivery Charges</div>
+                        {% if price < 1000 %}
+                          <div class="price-value">FREE</div>                        
+                        {% else%}
+                          <div class="price-value">29</div>                            
+                        {% endif %}
+                    </div>
+                    
+                    <div class="price-row">
+                        <div class="price-label">Platform Fee</div>
+                        <div class="price-value">4</div>
+                    </div>
+                    
+                    <div class="total-row">
+                        <div class="price-label">Total Payable</div>
+                        <div class="price-value">{{totalAmmount}}</div>
+                    </div>
+                
+                </div>
+            </div>
+           {% else %}
             <div class="price-section">
                 <div class="price-container">
                     <div class="price-title">PRICE DETAILS</div>
@@ -111,6 +168,8 @@ payment
                     </div>
                 </div>
             </div>
+           {% endif %}
+
             <button class="place-order-btn">PLACE ORDER</button>
         </div>
     </div>

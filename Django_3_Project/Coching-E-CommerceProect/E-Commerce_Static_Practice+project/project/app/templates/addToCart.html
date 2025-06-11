@@ -38,8 +38,9 @@ cart
         </div>
         <label><input type="checkbox" checked> This will be a gift</label>
         <div class="qty-control">
-          <button>-</button>
+          <button href="#">-</button>
           <span>1</span>
+          {% comment %} <button><a href="{% url 'ItemIncrementOne' pid=product.id pk=userdata.id %}">+</a></button> {% endcomment %}
           <button>+</button>
         </div>
         <div class="cart-actions">
@@ -111,7 +112,7 @@ cart
       </div>
 
       <div class="summary-row total">
-        <a id="TotalBuyButton" href="#">Buy Card Item</a>
+        <a id="TotalBuyButton" href="{% url 'buyAllAddToCartItem' pk=userdata.id %}">Buy All Card Item</a>
       </div>
 
       <div class="savings-text">
